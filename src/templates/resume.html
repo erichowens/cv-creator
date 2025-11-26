@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{header.name}} - Resume</title>
+  <style>
+    /* Reset and base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Print-optimized page settings */
+    @page {
+      size: A4;
+      margin: 0.75in;
+    }
+
+    body {
+      font-family: Calibri, 'Trebuchet MS', Arial, sans-serif;
+      font-size: 11pt;
+      line-height: 1.4;
+      color: #000;
+      background: #fff;
+    }
+
+    /* Prevent page breaks inside elements */
+    h1, h2, h3, p, li {
+      page-break-inside: avoid;
+    }
+
+    /* Header section */
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #000;
+    }
+
+    .header h1 {
+      font-size: 24pt;
+      font-weight: bold;
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+    }
+
+    .header .contact {
+      font-size: 10pt;
+      color: #333;
+    }
+
+    .header .contact a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+
+    /* Section headers */
+    .section {
+      margin-bottom: 18px;
+      page-break-inside: avoid;
+    }
+
+    .section-header {
+      font-size: 13pt;
+      font-weight: bold;
+      text-transform: uppercase;
+      border-bottom: 1px solid #000;
+      padding-bottom: 4px;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
+
+    /* Professional Summary */
+    .summary {
+      line-height: 1.5;
+      text-align: justify;
+    }
+
+    /* Skills section */
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      line-height: 1.6;
+    }
+
+    .skills-list li {
+      display: inline;
+      list-style: none;
+    }
+
+    .skills-list li:after {
+      content: " •";
+      margin-left: 8px;
+    }
+
+    .skills-list li:last-child:after {
+      content: "";
+    }
+
+    /* Experience entries */
+    .experience-entry {
+      margin-bottom: 14px;
+      page-break-inside: avoid;
+    }
+
+    .experience-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 4px;
+    }
+
+    .experience-title {
+      font-weight: bold;
+      font-size: 11.5pt;
+    }
+
+    .experience-company {
+      font-weight: bold;
+      font-size: 11pt;
+    }
+
+    .experience-dates {
+      font-size: 10pt;
+      color: #333;
+      font-style: italic;
+    }
+
+    .experience-bullets {
+      margin-top: 6px;
+      margin-left: 20px;
+    }
+
+    .experience-bullets li {
+      margin-bottom: 4px;
+      line-height: 1.4;
+    }
+
+    /* Education entries */
+    .education-entry {
+      margin-bottom: 10px;
+    }
+
+    .education-header {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .education-degree {
+      font-weight: bold;
+    }
+
+    .education-year {
+      font-style: italic;
+      color: #333;
+    }
+
+    /* Optional sections */
+    .certifications-list,
+    .awards-list {
+      margin-left: 20px;
+    }
+
+    .certifications-list li,
+    .awards-list li {
+      margin-bottom: 4px;
+    }
+
+    /* Utilities */
+    .no-break {
+      page-break-inside: avoid;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <div class="header">
+    <h1>{{header.name}}</h1>
+    <div class="contact">
+      {{header.email}}
+      {{#if header.phone}} • {{header.phone}}{{/if}}
+      {{#if header.location}} • {{header.location}}{{/if}}
+      {{#if header.linkedin}} • <a href="{{header.linkedin}}">LinkedIn</a>{{/if}}
+      {{#if header.github}} • <a href="{{header.github}}">GitHub</a>{{/if}}
+    </div>
+  </div>
+
+  <!-- Professional Summary -->
+  <div class="section">
+    <div class="section-header">Professional Summary</div>
+    <p class="summary">{{summary}}</p>
+  </div>
+
+  <!-- Core Skills -->
+  <div class="section">
+    <div class="section-header">Core Skills</div>
+    <ul class="skills-list">
+      {{#each skills}}
+      <li>{{this}}</li>
+      {{/each}}
+    </ul>
+  </div>
+
+  <!-- Work Experience -->
+  <div class="section">
+    <div class="section-header">Work Experience</div>
+    {{#each experience}}
+    <div class="experience-entry">
+      <div class="experience-header">
+        <div>
+          <div class="experience-title">{{role}}</div>
+          <div class="experience-company">{{company}}</div>
+        </div>
+        <div class="experience-dates">{{dates}}</div>
+      </div>
+      <ul class="experience-bullets">
+        {{#each bullets}}
+        <li>{{this}}</li>
+        {{/each}}
+      </ul>
+    </div>
+    {{/each}}
+  </div>
+
+  <!-- Education -->
+  <div class="section">
+    <div class="section-header">Education</div>
+    {{#each education}}
+    <div class="education-entry">
+      <div class="education-header">
+        <div class="education-degree">{{degree}} - {{institution}}</div>
+        <div class="education-year">{{year}}</div>
+      </div>
+      {{#if gpa}}
+      <div>GPA: {{gpa}}</div>
+      {{/if}}
+      {{#if honors}}
+      <div>{{honors}}</div>
+      {{/if}}
+    </div>
+    {{/each}}
+  </div>
+
+  <!-- Certifications (if any) -->
+  {{#if certifications}}
+  <div class="section">
+    <div class="section-header">Certifications</div>
+    <ul class="certifications-list">
+      {{#each certifications}}
+      <li>{{this}}</li>
+      {{/each}}
+    </ul>
+  </div>
+  {{/if}}
+
+  <!-- Awards (if any) -->
+  {{#if awards}}
+  <div class="section">
+    <div class="section-header">Awards & Recognition</div>
+    <ul class="awards-list">
+      {{#each awards}}
+      <li>{{this}}</li>
+      {{/each}}
+    </ul>
+  </div>
+  {{/if}}
+
+  <!-- Publications (if any) -->
+  {{#if publications}}
+  <div class="section">
+    <div class="section-header">Publications</div>
+    <ul class="awards-list">
+      {{#each publications}}
+      <li>{{this}}</li>
+      {{/each}}
+    </ul>
+  </div>
+  {{/if}}
+</body>
+</html>
