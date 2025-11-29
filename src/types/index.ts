@@ -104,6 +104,7 @@ export interface PositioningStrategy {
     headline: string; // Strategic headline
     differentiators: string[]; // What makes you unique
     messaging: string; // Core message
+    keyMetrics?: KeyMetric[]; // Top 4 metrics for portfolio
   };
 
   visualStrategy: {
@@ -182,6 +183,11 @@ export interface EducationEntry {
 // OUTPUT: Portfolio website data
 // ============================================================================
 
+export interface KeyMetric {
+  value: string; // e.g., "12", "40%", "10M+"
+  label: string; // e.g., "Patents", "Latency Reduction", "Users Served"
+}
+
 export interface PortfolioData {
   // Hero section
   hero: {
@@ -195,6 +201,7 @@ export interface PortfolioData {
       email: string;
       resume: string; // Path to PDF resume
     };
+    keyMetrics?: KeyMetric[]; // Top 4 metrics for the metrics bar
   };
 
   // About section

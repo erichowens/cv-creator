@@ -15,6 +15,7 @@ import {
   PortfolioProject,
   SkillCategory,
   TimelineEvent,
+  KeyMetric,
 } from '../types';
 
 /**
@@ -69,6 +70,7 @@ export function transformToPortfolio(
         email: profile.email,
         resume: 'resume.pdf', // Will be in same output directory
       },
+      keyMetrics: strategy?.positioning.keyMetrics || generateDefaultMetrics(profile),
     },
 
     about: {
@@ -470,4 +472,46 @@ function determineAvailability(aspirations: CareerProfile['aspirations']): strin
   }
 
   return 'Open to opportunities';
+}
+
+/**
+ * Generate default metrics from career profile when not provided in positioning
+ */
+function generateDefaultMetrics(profile: CareerProfile): KeyMetric[] {
+  const metrics: KeyMetric[] = [];
+
+  // Count patents
+  const patentCount = profile.timelineEvents.filter((e) => e.type === 'patent').length;
+  if (patentCount > 0) {
+    metrics.push({ value: String(patentCount), label: 'Patents' });
+  }
+
+  // Calculate years of experience from earliest role
+  const roleEvents = profile.timelineEvents.filter((e) => e.type === 'role_change');
+  if (roleEvents.length > 0) {
+    const dates = roleEvents.map((e) => new Date(e.date + '-01').getTime());
+    const earliest = Math.min(...dates);
+    const years = Math.floor((Date.now() - earliest) / (365.25 * 24 * 60 * 60 * 1000));
+    metrics.push({ value: `${years}+`, label: 'Years Experience' });
+  }
+
+  // Count awards
+  const awardCount = profile.timelineEvents.filter((e) => e.type === 'award').length;
+  if (awardCount > 0) {
+    metrics.push({ value: String(awardCount), label: 'Awards' });
+  }
+
+  // Add skills count
+  const technicalSkills = profile.skills.filter((s) => s.category === 'technical').length;
+  if (technicalSkills > 0) {
+    metrics.push({ value: String(technicalSkills), label: 'Technical Skills' });
+  }
+
+  // Add projects count
+  if (profile.projects.length > 0) {
+    metrics.push({ value: String(profile.projects.length), label: 'Projects' });
+  }
+
+  // Return top 4 metrics
+  return metrics.slice(0, 4);
 }

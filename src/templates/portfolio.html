@@ -832,24 +832,16 @@
       </div>
 
       <!-- Metrics Bar -->
+      {{#if hero.keyMetrics}}
       <div class="metrics-bar">
+        {{#each hero.keyMetrics}}
         <div class="metric">
-          <div class="metric-value">8+</div>
-          <div class="metric-label">Years Experience</div>
+          <div class="metric-value">{{value}}</div>
+          <div class="metric-label">{{label}}</div>
         </div>
-        <div class="metric">
-          <div class="metric-value">40%</div>
-          <div class="metric-label">Latency Reduction</div>
-        </div>
-        <div class="metric">
-          <div class="metric-value">10M+</div>
-          <div class="metric-label">Users Served</div>
-        </div>
-        <div class="metric">
-          <div class="metric-value">99.99%</div>
-          <div class="metric-label">Uptime SLA</div>
-        </div>
+        {{/each}}
       </div>
+      {{/if}}
     </div>
   </section>
 
