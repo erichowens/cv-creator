@@ -12,8 +12,17 @@
   <meta property="og:title" content="{{meta.title}}">
   <meta property="og:description" content="{{meta.description}}">
 
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
   <style>
-    /* Windows 3.1 Design System */
+    /* ============================================
+       THE QUIET ARCHITECT - Design System
+       Calm Technical Authority
+       ============================================ */
+
     * {
       margin: 0;
       padding: 0;
@@ -21,781 +30,917 @@
     }
 
     :root {
-      /* Windows 3.1 Classic Colors */
-      --win31-title-bar: #000080;
-      --win31-blue: #0000AA;
-      --win31-cyan: #00AAAA;
-      --win31-light-gray: #C0C0C0;
-      --win31-dark-gray: #808080;
-      --win31-white: #FFFFFF;
-      --win31-black: #000000;
+      /* Foundation - Warm neutrals, not cold grays */
+      --bg-primary: #FAFAFA;
+      --bg-secondary: #F5F5F4;
+      --bg-card: #FFFFFF;
+      --text-primary: #1C1917;
+      --text-secondary: #57534E;
+      --text-muted: #A8A29E;
+      --border: #E7E5E4;
 
-      /* Happy Optimistic Accents */
-      --happy-yellow: #FFD700;
-      --happy-coral: #FF7F50;
-      --happy-mint: #98D8C8;
-      --warm-cream: #FAF7F0;
+      /* Accent - Confident but not aggressive */
+      --accent: #2563EB;
+      --accent-hover: #1D4ED8;
+      --accent-muted: #DBEAFE;
+      --accent-subtle: #EFF6FF;
 
-      /* 3D Bevel System */
-      --bevel-light: #FFFFFF;
-      --bevel-dark: #000000;
-      --bevel-mid-light: #DFDFDF;
-      --bevel-mid-dark: #808080;
+      /* Metrics - Numbers that speak */
+      --metric-green: #059669;
+      --metric-green-bg: #D1FAE5;
+      --metric-gold: #D97706;
+      --metric-gold-bg: #FEF3C7;
 
       /* Typography */
-      --font-heading: Georgia, 'Garamond', serif;
-      --font-body: 'MS Sans Serif', Tahoma, sans-serif;
-      --font-code: 'Courier New', Courier, monospace;
+      --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 
-      /* Spacing (Windows 3.1 tight spacing) */
-      --spacing-xs: 2px;
-      --spacing-sm: 4px;
-      --spacing-md: 8px;
-      --spacing-lg: 16px;
-      --spacing-xl: 24px;
+      /* Spacing */
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+      --space-24: 6rem;
+
+      /* Shadows - Subtle depth */
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.07);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.08);
+
+      /* Transitions - Measured, not frantic */
+      --transition-fast: 150ms ease;
+      --transition-base: 250ms ease;
+      --transition-slow: 350ms ease;
+
+      /* Layout */
+      --max-width: 1100px;
+      --content-width: 720px;
     }
 
     html {
-      scroll-behavior: auto; /* No smooth scroll - instant like Windows */
+      scroll-behavior: smooth;
     }
 
     body {
-      font-family: var(--font-body);
-      font-size: 11pt;
-      line-height: 1.4;
-      color: var(--win31-black);
-      background: var(--win31-cyan);
-      background-image:
-        repeating-linear-gradient(
-          0deg,
-          rgba(0, 0, 0, 0.02) 0px,
-          rgba(0, 0, 0, 0.02) 1px,
-          transparent 1px,
-          transparent 2px
-        ),
-        repeating-linear-gradient(
-          90deg,
-          rgba(0, 0, 0, 0.02) 0px,
-          rgba(0, 0, 0, 0.02) 1px,
-          transparent 1px,
-          transparent 2px
-        );
-      padding: var(--spacing-lg);
-      min-height: 100vh;
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--text-primary);
+      background: var(--bg-primary);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
-    /* Windows 3.1 Window Component */
-    .win31-window {
-      background: var(--win31-light-gray);
-      border-top: 2px solid var(--bevel-light);
-      border-left: 2px solid var(--bevel-light);
-      border-bottom: 2px solid var(--bevel-dark);
-      border-right: 2px solid var(--bevel-dark);
-      box-shadow: 2px 2px 0px var(--bevel-mid-dark);
-      margin-bottom: var(--spacing-lg);
-      max-width: 1000px;
-      margin-left: auto;
-      margin-right: auto;
-    }
+    /* ============================================
+       TYPOGRAPHY - Clean, confident, not shouting
+       ============================================ */
 
-    .title-bar {
-      background: var(--win31-title-bar);
-      color: var(--win31-white);
-      padding: var(--spacing-xs) var(--spacing-sm);
-      font-weight: bold;
-      font-size: 11pt;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 18px;
-    }
-
-    .window-controls {
-      display: flex;
-      gap: var(--spacing-xs);
-    }
-
-    .window-btn {
-      background: var(--win31-light-gray);
-      border-top: 2px solid var(--bevel-light);
-      border-left: 2px solid var(--bevel-light);
-      border-bottom: 2px solid var(--bevel-dark);
-      border-right: 2px solid var(--bevel-dark);
-      width: 16px;
-      height: 14px;
-      font-size: 10pt;
-      line-height: 10px;
-      text-align: center;
-      cursor: pointer;
-      font-weight: bold;
-      color: var(--win31-black);
-    }
-
-    .window-btn:active {
-      border-top: 2px solid var(--bevel-dark);
-      border-left: 2px solid var(--bevel-dark);
-      border-bottom: 2px solid var(--bevel-light);
-      border-right: 2px solid var(--bevel-light);
-    }
-
-    .window-content {
-      background: var(--win31-white);
-      border-top: 2px solid var(--bevel-mid-dark);
-      border-left: 2px solid var(--bevel-mid-dark);
-      border-bottom: 2px solid var(--bevel-mid-light);
-      border-right: 2px solid var(--bevel-mid-light);
-      margin: var(--spacing-sm);
-      padding: var(--spacing-lg);
-    }
-
-    /* Typography */
     h1, h2, h3, h4 {
-      font-family: var(--font-heading);
-      font-weight: 700;
-      color: var(--win31-title-bar);
-      margin-bottom: var(--spacing-md);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.3;
+      color: var(--text-primary);
     }
 
     h1 {
-      font-size: 32pt;
-      color: var(--happy-coral);
-      text-shadow: 2px 2px 0px var(--bevel-mid-dark);
+      font-size: 2.5rem;
+      font-weight: 700;
     }
 
     h2 {
-      font-size: 24pt;
-      color: var(--win31-title-bar);
-      border-bottom: 2px solid var(--win31-title-bar);
-      padding-bottom: var(--spacing-sm);
+      font-size: 1.75rem;
+      margin-bottom: var(--space-6);
     }
 
     h3 {
-      font-size: 16pt;
-      color: var(--win31-blue);
-    }
-
-    h4 {
-      font-size: 14pt;
-      color: var(--win31-blue);
+      font-size: 1.25rem;
+      margin-bottom: var(--space-3);
     }
 
     p {
-      margin-bottom: var(--spacing-md);
-      line-height: 1.5;
+      color: var(--text-secondary);
+      margin-bottom: var(--space-4);
     }
 
-    /* Buttons */
-    .win31-btn {
-      background: var(--win31-light-gray);
-      border-top: 2px solid var(--bevel-light);
-      border-left: 2px solid var(--bevel-light);
-      border-bottom: 2px solid var(--bevel-dark);
-      border-right: 2px solid var(--bevel-dark);
-      padding: var(--spacing-sm) var(--spacing-lg);
-      font-family: var(--font-body);
-      font-size: 11pt;
-      font-weight: bold;
-      cursor: pointer;
-      display: inline-block;
+    a {
+      color: var(--accent);
       text-decoration: none;
-      color: var(--win31-black);
-      margin-right: var(--spacing-md);
-      margin-bottom: var(--spacing-sm);
+      transition: color var(--transition-fast);
     }
 
-    .win31-btn:active {
-      border-top: 2px solid var(--bevel-dark);
-      border-left: 2px solid var(--bevel-dark);
-      border-bottom: 2px solid var(--bevel-light);
-      border-right: 2px solid var(--bevel-light);
-      padding-top: calc(var(--spacing-sm) + 2px);
-      padding-left: calc(var(--spacing-lg) + 2px);
+    a:hover {
+      color: var(--accent-hover);
     }
 
-    .win31-btn-primary {
-      background: var(--win31-title-bar);
-      color: var(--win31-white);
-      font-weight: bold;
-      border-top: 2px solid var(--win31-blue);
-      border-left: 2px solid var(--win31-blue);
-      border-bottom: 2px solid var(--bevel-dark);
-      border-right: 2px solid var(--bevel-dark);
+    /* ============================================
+       LAYOUT
+       ============================================ */
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 var(--space-6);
     }
 
-    /* Navigation Menu Bar */
-    .menu-bar {
-      background: var(--win31-light-gray);
-      border-bottom: 2px solid var(--bevel-mid-dark);
-      padding: var(--spacing-xs);
-      margin-bottom: var(--spacing-lg);
-      max-width: 1000px;
-      margin-left: auto;
-      margin-right: auto;
-      border-top: 2px solid var(--bevel-light);
-      border-left: 2px solid var(--bevel-light);
-      border-right: 2px solid var(--bevel-dark);
-      box-shadow: 2px 2px 0px var(--bevel-mid-dark);
+    .section {
+      padding: var(--space-16) 0;
     }
 
-    .menu-bar ul {
-      list-style: none;
-      display: flex;
-      gap: var(--spacing-md);
-    }
-
-    .menu-bar a {
-      color: var(--win31-black);
-      text-decoration: none;
-      padding: var(--spacing-xs) var(--spacing-sm);
-      display: block;
-      font-weight: normal;
-    }
-
-    .menu-bar a:hover {
-      background: var(--win31-title-bar);
-      color: var(--win31-white);
-    }
-
-    .menu-bar a:active {
-      background: var(--bevel-mid-dark);
-    }
-
-    /* Hero Section */
-    .hero-content {
+    .section-header {
       text-align: center;
-      padding: var(--spacing-xl) 0;
+      margin-bottom: var(--space-12);
     }
 
-    .headline {
-      font-size: 18pt;
-      color: var(--win31-dark-gray);
-      margin-bottom: var(--spacing-lg);
-      font-family: var(--font-heading);
-      font-weight: normal;
+    .section-header p {
+      max-width: 600px;
+      margin: var(--space-4) auto 0;
+      font-size: 1.125rem;
     }
 
-    .tagline {
-      font-size: 12pt;
-      color: var(--win31-black);
-      margin-bottom: var(--spacing-lg);
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
+    /* ============================================
+       NAVIGATION - Minimal, functional
+       ============================================ */
+
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(250, 250, 250, 0.9);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
     }
 
-    /* Info Boxes */
-    .info-box {
-      background: var(--warm-cream);
-      border: 2px solid var(--happy-yellow);
-      padding: var(--spacing-md);
-      margin: var(--spacing-md) 0;
-      border-left: 4px solid var(--happy-yellow);
+    nav .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 64px;
     }
 
-    .info-box strong {
-      color: var(--win31-title-bar);
+    .nav-brand {
+      font-weight: 600;
+      color: var(--text-primary);
+      font-size: 1.125rem;
     }
 
-    /* List Styles */
-    .differentiators {
-      margin: var(--spacing-lg) 0;
-    }
-
-    .differentiators ul {
+    .nav-links {
+      display: flex;
+      gap: var(--space-8);
       list-style: none;
-      margin-left: 0;
     }
 
-    .differentiators li {
-      padding: var(--spacing-sm) 0;
-      padding-left: var(--spacing-lg);
+    .nav-links a {
+      color: var(--text-secondary);
+      font-size: 0.9375rem;
+      font-weight: 500;
+      padding: var(--space-2) 0;
       position: relative;
     }
 
-    .differentiators li:before {
-      content: "✓";
-      position: absolute;
-      left: 0;
-      color: var(--happy-coral);
-      font-weight: bold;
+    .nav-links a:hover {
+      color: var(--text-primary);
     }
 
-    /* Experience Timeline */
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width var(--transition-base);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* ============================================
+       HERO - Let the work speak
+       ============================================ */
+
+    .hero {
+      padding: var(--space-24) 0;
+      text-align: center;
+    }
+
+    .hero h1 {
+      margin-bottom: var(--space-4);
+    }
+
+    .hero-headline {
+      font-size: 1.5rem;
+      color: var(--text-secondary);
+      font-weight: 400;
+      margin-bottom: var(--space-6);
+    }
+
+    .hero-tagline {
+      max-width: 600px;
+      margin: 0 auto var(--space-8);
+      font-size: 1.125rem;
+      line-height: 1.7;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: var(--space-4);
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-3) var(--space-6);
+      border-radius: 6px;
+      font-weight: 500;
+      font-size: 0.9375rem;
+      transition: all var(--transition-base);
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      color: white;
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-secondary {
+      background: var(--bg-card);
+      color: var(--text-primary);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .hero-links {
+      margin-top: var(--space-8);
+      display: flex;
+      gap: var(--space-6);
+      justify-content: center;
+    }
+
+    .hero-links a {
+      color: var(--text-muted);
+      font-size: 0.9375rem;
+    }
+
+    .hero-links a:hover {
+      color: var(--accent);
+    }
+
+    /* ============================================
+       METRICS BAR - Numbers that matter
+       ============================================ */
+
+    .metrics-bar {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: var(--space-6);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: var(--space-6);
+      margin: var(--space-12) 0;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .metric {
+      text-align: center;
+    }
+
+    .metric-value {
+      font-family: var(--font-mono);
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: var(--space-2);
+    }
+
+    .metric-label {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* ============================================
+       ABOUT - Warm competence
+       ============================================ */
+
+    .about-content {
+      max-width: var(--content-width);
+      margin: 0 auto;
+    }
+
+    .about-content p {
+      font-size: 1.125rem;
+      line-height: 1.8;
+    }
+
+    .differentiators {
+      margin-top: var(--space-8);
+      display: grid;
+      gap: var(--space-4);
+    }
+
+    .differentiator {
+      display: flex;
+      gap: var(--space-4);
+      padding: var(--space-4);
+      background: var(--accent-subtle);
+      border-radius: 8px;
+      border-left: 3px solid var(--accent);
+    }
+
+    .differentiator-icon {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 0.75rem;
+    }
+
+    .differentiator p {
+      margin: 0;
+      color: var(--text-primary);
+    }
+
+    /* ============================================
+       EXPERIENCE - Let achievements speak
+       ============================================ */
+
+    .experience-list {
+      max-width: var(--content-width);
+      margin: 0 auto;
+    }
+
     .experience-item {
-      margin-bottom: var(--spacing-xl);
-      padding: var(--spacing-md);
-      background: var(--warm-cream);
-      border-top: 2px solid var(--bevel-mid-dark);
-      border-left: 2px solid var(--bevel-mid-dark);
-      border-bottom: 2px solid var(--bevel-mid-light);
-      border-right: 2px solid var(--bevel-mid-light);
+      position: relative;
+      padding-left: var(--space-8);
+      padding-bottom: var(--space-12);
+      border-left: 2px solid var(--border);
+    }
+
+    .experience-item:last-child {
+      padding-bottom: 0;
+      border-left-color: transparent;
+    }
+
+    .experience-item::before {
+      content: '';
+      position: absolute;
+      left: -6px;
+      top: 0;
+      width: 10px;
+      height: 10px;
+      background: var(--accent);
+      border-radius: 50%;
+      border: 2px solid var(--bg-primary);
+    }
+
+    .experience-header {
+      margin-bottom: var(--space-4);
     }
 
     .experience-role {
-      font-size: 14pt;
-      font-weight: bold;
-      color: var(--win31-title-bar);
-      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: var(--space-1);
     }
 
     .experience-company {
-      font-size: 12pt;
-      color: var(--happy-coral);
-      font-weight: bold;
+      font-size: 1rem;
+      color: var(--accent);
+      font-weight: 500;
     }
 
     .experience-dates {
-      font-size: 10pt;
-      color: var(--win31-dark-gray);
-      font-style: italic;
-      margin-bottom: var(--spacing-sm);
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-top: var(--space-1);
+    }
+
+    .experience-description {
+      margin-bottom: var(--space-4);
     }
 
     .achievements {
-      list-style: square;
-      margin-left: var(--spacing-lg);
-      margin-top: var(--spacing-sm);
+      list-style: none;
+      margin-bottom: var(--space-4);
     }
 
     .achievements li {
-      margin-bottom: var(--spacing-xs);
+      position: relative;
+      padding-left: var(--space-6);
+      margin-bottom: var(--space-3);
+      color: var(--text-secondary);
     }
 
-    /* Tech Tags */
+    .achievements li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--metric-green);
+      font-weight: 600;
+    }
+
     .tech-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: var(--spacing-sm);
-      margin-top: var(--spacing-md);
+      gap: var(--space-2);
     }
 
     .tech-tag {
-      background: var(--win31-light-gray);
-      border-top: 1px solid var(--bevel-light);
-      border-left: 1px solid var(--bevel-light);
-      border-bottom: 1px solid var(--bevel-dark);
-      border-right: 1px solid var(--bevel-dark);
-      padding: var(--spacing-xs) var(--spacing-sm);
-      font-size: 10pt;
-      font-family: var(--font-code);
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      padding: var(--space-1) var(--space-3);
+      background: var(--bg-secondary);
+      border-radius: 4px;
+      color: var(--text-secondary);
     }
 
-    /* Projects Grid */
+    /* ============================================
+       PROJECTS - Show, don't tell
+       ============================================ */
+
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: var(--spacing-lg);
-      margin-top: var(--spacing-lg);
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: var(--space-6);
     }
 
     .project-card {
-      background: var(--win31-light-gray);
-      border-top: 2px solid var(--bevel-light);
-      border-left: 2px solid var(--bevel-light);
-      border-bottom: 2px solid var(--bevel-dark);
-      border-right: 2px solid var(--bevel-dark);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all var(--transition-base);
     }
 
-    .project-title-bar {
-      background: var(--win31-title-bar);
-      color: var(--win31-white);
-      padding: var(--spacing-xs) var(--spacing-sm);
-      font-weight: bold;
-      font-size: 11pt;
+    .project-card:hover {
+      border-color: var(--accent);
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-2px);
+    }
+
+    .project-image {
+      aspect-ratio: 16/10;
+      background: var(--bg-secondary);
+      overflow: hidden;
+    }
+
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .project-content {
-      background: var(--win31-white);
-      border-top: 2px solid var(--bevel-mid-dark);
-      border-left: 2px solid var(--bevel-mid-dark);
-      border-bottom: 2px solid var(--bevel-mid-light);
-      border-right: 2px solid var(--bevel-mid-light);
-      margin: var(--spacing-sm);
-      padding: var(--spacing-md);
+      padding: var(--space-6);
+    }
+
+    .project-title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: var(--space-2);
     }
 
     .project-description {
-      margin: var(--spacing-sm) 0;
+      font-size: 0.9375rem;
+      color: var(--text-secondary);
+      margin-bottom: var(--space-4);
     }
 
     .project-impact {
-      color: var(--happy-coral);
-      font-weight: bold;
-      margin: var(--spacing-sm) 0;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-2) var(--space-3);
+      background: var(--metric-green-bg);
+      border-radius: 6px;
+      font-size: 0.875rem;
+      color: var(--metric-green);
+      font-weight: 500;
+      margin-bottom: var(--space-4);
     }
 
-    .project-screenshot {
-      margin: var(--spacing-md) 0;
-      border-top: 2px solid var(--bevel-dark);
-      border-left: 2px solid var(--bevel-dark);
-      border-bottom: 2px solid var(--bevel-light);
-      border-right: 2px solid var(--bevel-light);
-      padding: 2px;
-      background: var(--win31-dark-gray);
+    .project-links {
+      display: flex;
+      gap: var(--space-4);
+      margin-top: var(--space-4);
+      padding-top: var(--space-4);
+      border-top: 1px solid var(--border);
     }
 
-    .project-screenshot img {
-      display: block;
-      width: 100%;
-      height: auto;
-      border-top: 1px solid var(--bevel-mid-dark);
-      border-left: 1px solid var(--bevel-mid-dark);
-      border-bottom: 1px solid var(--bevel-mid-light);
-      border-right: 1px solid var(--bevel-mid-light);
+    .project-links a {
+      font-size: 0.875rem;
+      font-weight: 500;
     }
 
-    /* Skills Grid */
+    /* ============================================
+       SKILLS - Organized expertise
+       ============================================ */
+
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: var(--space-6);
+    }
+
     .skill-category {
-      background: var(--win31-light-gray);
-      border-top: 2px solid var(--bevel-light);
-      border-left: 2px solid var(--bevel-light);
-      border-bottom: 2px solid var(--bevel-dark);
-      border-right: 2px solid var(--bevel-dark);
-      margin-bottom: var(--spacing-lg);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: var(--space-6);
     }
 
     .skill-category-title {
-      background: var(--win31-title-bar);
-      color: var(--win31-white);
-      padding: var(--spacing-xs) var(--spacing-sm);
-      font-weight: bold;
-      font-size: 11pt;
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: var(--space-4);
+      padding-bottom: var(--space-3);
+      border-bottom: 1px solid var(--border);
     }
 
-    .skill-category-content {
-      background: var(--win31-white);
-      border-top: 2px solid var(--bevel-mid-dark);
-      border-left: 2px solid var(--bevel-mid-dark);
-      border-bottom: 2px solid var(--bevel-mid-light);
-      border-right: 2px solid var(--bevel-mid-light);
-      margin: var(--spacing-sm);
-      padding: var(--spacing-md);
-    }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: var(--spacing-md);
+    .skill-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
     }
 
     .skill-item {
-      margin-bottom: var(--spacing-sm);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
     .skill-name {
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .skill-meta {
       display: flex;
-      justify-content: space-between;
-      margin-bottom: var(--spacing-xs);
-      font-weight: bold;
+      align-items: center;
+      gap: var(--space-3);
     }
 
     .skill-years {
-      font-weight: normal;
-      color: var(--win31-dark-gray);
-      font-size: 10pt;
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      color: var(--text-muted);
     }
 
     .skill-bar {
-      height: 16px;
-      background: var(--win31-white);
-      border-top: 2px solid var(--bevel-mid-dark);
-      border-left: 2px solid var(--bevel-mid-dark);
-      border-bottom: 2px solid var(--bevel-mid-light);
-      border-right: 2px solid var(--bevel-mid-light);
+      width: 60px;
+      height: 4px;
+      background: var(--bg-secondary);
+      border-radius: 2px;
       overflow: hidden;
     }
 
     .skill-fill {
       height: 100%;
-      background: var(--win31-title-bar);
-      transition: none; /* No smooth animations */
+      background: var(--accent);
+      border-radius: 2px;
+      transition: width var(--transition-slow);
     }
 
-    /* Education Styles */
+    /* ============================================
+       EDUCATION
+       ============================================ */
+
+    .education-list {
+      max-width: var(--content-width);
+      margin: 0 auto;
+    }
+
     .education-item {
-      margin-bottom: var(--spacing-lg);
-      padding-bottom: var(--spacing-lg);
-      border-bottom: 1px solid var(--win31-dark-gray);
-    }
-
-    .education-item:last-child {
-      border-bottom: none;
-    }
-
-    .education-header {
       display: flex;
       justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: var(--spacing-sm);
+      align-items: flex-start;
+      padding: var(--space-6);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-bottom: var(--space-4);
     }
 
-    .education-header h3 {
-      font-family: var(--font-heading);
-      font-size: 14pt;
-      font-weight: bold;
-      color: var(--win31-title-bar);
-      margin: 0;
-    }
-
-    .education-year {
-      font-family: var(--font-body);
-      font-size: 10pt;
-      font-weight: bold;
-      color: var(--win31-dark-gray);
+    .education-main h3 {
+      margin-bottom: var(--space-1);
     }
 
     .education-institution {
-      font-family: var(--font-body);
-      font-size: 11pt;
-      color: var(--win31-black);
-      margin-bottom: var(--spacing-xs);
+      color: var(--accent);
+      font-weight: 500;
     }
 
     .education-details {
-      font-size: 10pt;
-      color: var(--win31-dark-gray);
-      line-height: 1.4;
-      margin-top: var(--spacing-sm);
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+      margin-top: var(--space-2);
     }
 
-    /* Status Bar */
-    .status-bar {
-      background: var(--win31-light-gray);
-      border-top: 2px solid var(--bevel-light);
-      padding: var(--spacing-xs) var(--spacing-sm);
-      display: flex;
-      gap: var(--spacing-lg);
-      max-width: 1000px;
-      margin: var(--spacing-lg) auto 0;
-      font-size: 10pt;
+    .education-year {
+      font-family: var(--font-mono);
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+      white-space: nowrap;
     }
 
-    .status-item {
-      border-top: 2px solid var(--bevel-mid-dark);
-      border-left: 2px solid var(--bevel-mid-dark);
-      border-bottom: 2px solid var(--bevel-light);
-      border-right: 2px solid var(--bevel-light);
-      padding: var(--spacing-xs) var(--spacing-sm);
+    /* ============================================
+       CONTACT - Clear call to action
+       ============================================ */
+
+    .contact-section {
+      background: var(--bg-secondary);
     }
 
-    /* Availability Badge */
-    .availability {
-      display: inline-block;
-      background: var(--happy-mint);
-      border: 2px solid var(--win31-dark-gray);
-      padding: var(--spacing-sm) var(--spacing-md);
-      font-weight: bold;
-      margin: var(--spacing-md) 0;
-    }
-
-    /* Footer */
-    footer {
-      background: var(--win31-light-gray);
-      border-top: 2px solid var(--bevel-light);
+    .contact-content {
+      max-width: var(--content-width);
+      margin: 0 auto;
       text-align: center;
-      padding: var(--spacing-lg);
-      margin-top: var(--spacing-xl);
-      max-width: 1000px;
-      margin-left: auto;
-      margin-right: auto;
-      font-size: 10pt;
-      color: var(--win31-dark-gray);
     }
 
-    /* Social Links */
-    .social-links {
+    .availability-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-2) var(--space-4);
+      background: var(--metric-green-bg);
+      border-radius: 20px;
+      color: var(--metric-green);
+      font-weight: 500;
+      font-size: 0.9375rem;
+      margin-bottom: var(--space-6);
+    }
+
+    .availability-badge::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: var(--metric-green);
+      border-radius: 50%;
+    }
+
+    .contact-links {
       display: flex;
+      gap: var(--space-4);
       justify-content: center;
-      gap: var(--spacing-md);
-      margin-top: var(--spacing-lg);
+      flex-wrap: wrap;
+      margin-top: var(--space-8);
     }
 
-    .social-links a {
-      color: var(--win31-title-bar);
-      text-decoration: underline;
-      font-weight: bold;
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-3) var(--space-6);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text-primary);
+      font-weight: 500;
+      transition: all var(--transition-base);
     }
 
-    .social-links a:hover {
-      color: var(--happy-coral);
+    .contact-link:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
     }
 
-    /* Responsive */
+    /* ============================================
+       FOOTER - Minimal
+       ============================================ */
+
+    footer {
+      padding: var(--space-8) 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.875rem;
+    }
+
+    /* ============================================
+       RESPONSIVE
+       ============================================ */
+
     @media (max-width: 768px) {
-      body {
-        padding: var(--spacing-sm);
+      :root {
+        --space-16: 3rem;
+        --space-24: 4rem;
       }
 
       h1 {
-        font-size: 24pt;
+        font-size: 2rem;
       }
 
       h2 {
-        font-size: 18pt;
+        font-size: 1.5rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero-headline {
+        font-size: 1.25rem;
+      }
+
+      .metrics-bar {
+        grid-template-columns: repeat(2, 1fr);
       }
 
       .projects-grid {
         grid-template-columns: 1fr;
       }
 
-      .menu-bar ul {
-        flex-wrap: wrap;
-        gap: var(--spacing-sm);
+      .skills-container {
+        grid-template-columns: 1fr;
       }
 
-      .status-bar {
+      .education-item {
         flex-direction: column;
-        gap: var(--spacing-sm);
+        gap: var(--space-2);
       }
-    }
-
-    /* Remove smooth animations */
-    * {
-      transition: none !important;
-      animation: none !important;
     }
   </style>
 </head>
 <body>
-  <!-- Menu Bar -->
-  <nav class="menu-bar">
-    <ul>
-      <li><a href="#hero">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+  <!-- Navigation -->
+  <nav>
+    <div class="container">
+      <a href="#" class="nav-brand">{{hero.name}}</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
   </nav>
 
-  <!-- Hero Window -->
-  <div class="win31-window" id="hero">
-    <div class="title-bar">
-      <span>{{hero.name}} - Portfolio</span>
-      <div class="window-controls">
-        <button class="window-btn">_</button>
-        <button class="window-btn">□</button>
-        <button class="window-btn">×</button>
-      </div>
-    </div>
-    <div class="window-content">
-      <div class="hero-content">
-        <h1>{{hero.name}}</h1>
-        <p class="headline">{{hero.headline}}</p>
-        <p class="tagline">{{hero.tagline}}</p>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h1>{{hero.name}}</h1>
+      <p class="hero-headline">{{hero.headline}}</p>
+      <p class="hero-tagline">{{hero.tagline}}</p>
 
-        <div>
-          <a href="{{hero.links.resume}}" class="win31-btn win31-btn-primary" download>Download Resume</a>
-          <a href="#contact" class="win31-btn">Get in Touch</a>
+      <div class="hero-cta">
+        <a href="{{hero.links.resume}}" class="btn btn-primary" download>Download Resume</a>
+        <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+      </div>
+
+      <div class="hero-links">
+        {{#if hero.links.linkedin}}
+        <a href="{{hero.links.linkedin}}" target="_blank">LinkedIn</a>
+        {{/if}}
+        {{#if hero.links.github}}
+        <a href="{{hero.links.github}}" target="_blank">GitHub</a>
+        {{/if}}
+        <a href="mailto:{{hero.links.email}}">{{hero.links.email}}</a>
+      </div>
+
+      <!-- Metrics Bar -->
+      <div class="metrics-bar">
+        <div class="metric">
+          <div class="metric-value">8+</div>
+          <div class="metric-label">Years Experience</div>
         </div>
-
-        <div class="social-links">
-          {{#if hero.links.linkedin}}
-          <a href="{{hero.links.linkedin}}" target="_blank">LinkedIn</a>
-          {{/if}}
-          {{#if hero.links.github}}
-          <a href="{{hero.links.github}}" target="_blank">GitHub</a>
-          {{/if}}
-          <a href="mailto:{{hero.links.email}}">Email</a>
+        <div class="metric">
+          <div class="metric-value">40%</div>
+          <div class="metric-label">Latency Reduction</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value">10M+</div>
+          <div class="metric-label">Users Served</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value">99.99%</div>
+          <div class="metric-label">Uptime SLA</div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- About Window -->
-  <div class="win31-window" id="about">
-    <div class="title-bar">
-      <span>About Me</span>
-      <div class="window-controls">
-        <button class="window-btn">_</button>
-        <button class="window-btn">□</button>
-        <button class="window-btn">×</button>
+  <!-- About -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-header">
+        <h2>About</h2>
       </div>
-    </div>
-    <div class="window-content">
-      <h2>About Me</h2>
-      <p>{{about.summary}}</p>
+      <div class="about-content">
+        <p>{{about.summary}}</p>
 
-      {{#if about.differentiators}}
-      <div class="differentiators">
-        <h3>What Sets Me Apart</h3>
-        <ul>
+        {{#if about.differentiators}}
+        <div class="differentiators">
           {{#each about.differentiators}}
-          <li>{{this}}</li>
-          {{/each}}
-        </ul>
-      </div>
-      {{/if}}
-    </div>
-  </div>
-
-  <!-- Experience Window -->
-  <div class="win31-window" id="experience">
-    <div class="title-bar">
-      <span>Work Experience</span>
-      <div class="window-controls">
-        <button class="window-btn">_</button>
-        <button class="window-btn">□</button>
-        <button class="window-btn">×</button>
-      </div>
-    </div>
-    <div class="window-content">
-      <h2>Work Experience</h2>
-
-      {{#each experience}}
-      <div class="experience-item">
-        <div class="experience-role">{{role}}</div>
-        <div class="experience-company">{{company}}</div>
-        <div class="experience-dates">{{dates}}</div>
-        <p>{{description}}</p>
-
-        {{#if achievements}}
-        <ul class="achievements">
-          {{#each achievements}}
-          <li>{{this}}</li>
-          {{/each}}
-        </ul>
-        {{/if}}
-
-        {{#if technologies}}
-        <div class="tech-tags">
-          {{#each technologies}}
-          <span class="tech-tag">{{this}}</span>
+          <div class="differentiator">
+            <span class="differentiator-icon">✓</span>
+            <p>{{this}}</p>
+          </div>
           {{/each}}
         </div>
         {{/if}}
       </div>
-      {{/each}}
     </div>
-  </div>
+  </section>
 
-  <!-- Projects Window -->
-  <div class="win31-window" id="projects">
-    <div class="title-bar">
-      <span>Featured Projects</span>
-      <div class="window-controls">
-        <button class="window-btn">_</button>
-        <button class="window-btn">□</button>
-        <button class="window-btn">×</button>
+  <!-- Experience -->
+  <section class="section" id="experience" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div class="section-header">
+        <h2>Experience</h2>
+        <p>Building systems that scale and teams that ship</p>
+      </div>
+
+      <div class="experience-list">
+        {{#each experience}}
+        <div class="experience-item">
+          <div class="experience-header">
+            <div class="experience-role">{{role}}</div>
+            <div class="experience-company">{{company}}</div>
+            <div class="experience-dates">{{dates}}</div>
+          </div>
+
+          <p class="experience-description">{{description}}</p>
+
+          {{#if achievements}}
+          <ul class="achievements">
+            {{#each achievements}}
+            <li>{{this}}</li>
+            {{/each}}
+          </ul>
+          {{/if}}
+
+          {{#if technologies}}
+          <div class="tech-tags">
+            {{#each technologies}}
+            <span class="tech-tag">{{this}}</span>
+            {{/each}}
+          </div>
+          {{/if}}
+        </div>
+        {{/each}}
       </div>
     </div>
-    <div class="window-content">
-      <h2>Featured Projects</h2>
+  </section>
+
+  <!-- Projects -->
+  <section class="section" id="projects">
+    <div class="container">
+      <div class="section-header">
+        <h2>Projects</h2>
+        <p>Select work that demonstrates impact</p>
+      </div>
 
       <div class="projects-grid">
         {{#each projects}}
         <div class="project-card">
-          <div class="project-title-bar">{{name}}</div>
+          {{#if screenshot}}
+          <div class="project-image">
+            <img src="{{screenshot}}" alt="{{name}}" loading="lazy">
+          </div>
+          {{/if}}
           <div class="project-content">
-            {{#if screenshot}}
-            <div class="project-screenshot">
-              <img src="{{screenshot}}" alt="{{name}} screenshot" loading="lazy">
+            <h3 class="project-title">{{name}}</h3>
+            <p class="project-description">{{description}}</p>
+
+            {{#if impact}}
+            <div class="project-impact">
+              <span>↗</span> {{impact}}
             </div>
             {{/if}}
-            <p class="project-description">{{description}}</p>
-            <p class="project-impact">💡 {{impact}}</p>
 
             {{#if technologies}}
             <div class="tech-tags">
@@ -805,12 +950,12 @@
             </div>
             {{/if}}
 
-            <div style="margin-top: var(--spacing-md);">
+            <div class="project-links">
               {{#if url}}
-              <a href="{{url}}" class="win31-btn" target="_blank">View Live</a>
+              <a href="{{url}}" target="_blank">View Live →</a>
               {{/if}}
               {{#if github}}
-              <a href="{{github}}" class="win31-btn" target="_blank">GitHub</a>
+              <a href="{{github}}" target="_blank">GitHub →</a>
               {{/if}}
             </div>
           </div>
@@ -818,133 +963,99 @@
         {{/each}}
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- Skills Window -->
-  <div class="win31-window" id="skills">
-    <div class="title-bar">
-      <span>Skills & Expertise</span>
-      <div class="window-controls">
-        <button class="window-btn">_</button>
-        <button class="window-btn">□</button>
-        <button class="window-btn">×</button>
+  <!-- Skills -->
+  <section class="section" id="skills" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div class="section-header">
+        <h2>Skills</h2>
+        <p>Technologies and expertise</p>
       </div>
-    </div>
-    <div class="window-content">
-      <h2>Skills & Expertise</h2>
 
-      {{#each skills}}
-      <div class="skill-category">
-        <div class="skill-category-title">{{category}}</div>
-        <div class="skill-category-content">
-          <div class="skills-grid">
+      <div class="skills-container">
+        {{#each skills}}
+        <div class="skill-category">
+          <div class="skill-category-title">{{category}}</div>
+          <div class="skill-list">
             {{#each skills}}
             <div class="skill-item">
-              <div class="skill-name">
-                <span>{{name}}</span>
-                <span class="skill-years">{{years}} yrs</span>
-              </div>
-              <div class="skill-bar">
-                <div class="skill-fill" style="width: {{proficiency}}%"></div>
+              <span class="skill-name">{{name}}</span>
+              <div class="skill-meta">
+                <span class="skill-years">{{years}}y</span>
+                <div class="skill-bar">
+                  <div class="skill-fill" style="width: {{proficiency}}%"></div>
+                </div>
               </div>
             </div>
             {{/each}}
           </div>
         </div>
-      </div>
-      {{/each}}
-    </div>
-  </div>
-
-  <!-- Education Window -->
-  <div class="win31-window" id="education">
-    <div class="title-bar">
-      <span>Education & Credentials</span>
-      <div class="window-controls">
-        <button class="window-btn">_</button>
-        <button class="window-btn">□</button>
-        <button class="window-btn">×</button>
+        {{/each}}
       </div>
     </div>
-    <div class="window-content">
-      <h2>Academic Background</h2>
+  </section>
 
-      {{#each education}}
-      <div class="education-item">
-        <div class="education-header">
-          <h3>{{degree}}</h3>
-          <span class="education-year">{{year}}</span>
+  <!-- Education -->
+  <section class="section" id="education">
+    <div class="container">
+      <div class="section-header">
+        <h2>Education</h2>
+      </div>
+
+      <div class="education-list">
+        {{#each education}}
+        <div class="education-item">
+          <div class="education-main">
+            <h3>{{degree}}</h3>
+            <div class="education-institution">{{institution}}</div>
+            {{#if details}}
+            <div class="education-details">{{details}}</div>
+            {{/if}}
+          </div>
+          <div class="education-year">{{year}}</div>
         </div>
-        <div class="education-institution">{{institution}}</div>
-        {{#if details}}
-        <div class="education-details">{{details}}</div>
-        {{/if}}
-      </div>
-      {{/each}}
-    </div>
-  </div>
-
-  <!-- Contact Window -->
-  <div class="win31-window" id="contact">
-    <div class="title-bar">
-      <span>Let's Connect</span>
-      <div class="window-controls">
-        <button class="window-btn">_</button>
-        <button class="window-btn">□</button>
-        <button class="window-btn">×</button>
+        {{/each}}
       </div>
     </div>
-    <div class="window-content">
-      <h2>Let's Connect</h2>
-      <p>I'm always open to new opportunities and collaborations</p>
+  </section>
 
-      <div class="availability">✅ {{contact.availability}}</div>
+  <!-- Contact -->
+  <section class="section contact-section" id="contact">
+    <div class="container">
+      <div class="contact-content">
+        <div class="availability-badge">{{contact.availability}}</div>
+        <h2>Let's Build Something</h2>
+        <p>Interested in working together? I'm always open to discussing new projects and opportunities.</p>
 
-      <div class="info-box">
-        <p><strong>Email:</strong> <a href="mailto:{{contact.email}}">{{contact.email}}</a></p>
-        {{#if contact.linkedin}}
-        <p><strong>LinkedIn:</strong> <a href="{{contact.linkedin}}" target="_blank">View Profile</a></p>
-        {{/if}}
-        {{#if contact.github}}
-        <p><strong>GitHub:</strong> <a href="{{contact.github}}" target="_blank">{{contact.github}}</a></p>
-        {{/if}}
+        <div class="contact-links">
+          <a href="mailto:{{contact.email}}" class="contact-link">
+            <span>✉</span> Email
+          </a>
+          {{#if contact.linkedin}}
+          <a href="{{contact.linkedin}}" class="contact-link" target="_blank">
+            <span>in</span> LinkedIn
+          </a>
+          {{/if}}
+          {{#if contact.github}}
+          <a href="{{contact.github}}" class="contact-link" target="_blank">
+            <span>⌘</span> GitHub
+          </a>
+          {{/if}}
+        </div>
       </div>
     </div>
-  </div>
-
-  <!-- Status Bar -->
-  <div class="status-bar">
-    <span class="status-item">12 Years Experience</span>
-    <span class="status-item">12 Patents</span>
-    <span class="status-item">Ready to Ship</span>
-    <span class="status-item">Built with Windows 3.1 Style</span>
-  </div>
+  </section>
 
   <!-- Footer -->
   <footer>
-    <p>© {{currentYear}} {{hero.name}}. All rights reserved.</p>
-    <p>Built with nostalgia • Powered by passion • Windows 3.1 inspired</p>
+    <div class="container">
+      <p>© <span id="year"></span> {{hero.name}}. Built with quiet confidence.</p>
+    </div>
   </footer>
 
   <script>
-    // Add current year
-    document.addEventListener('DOMContentLoaded', function() {
-      const year = new Date().getFullYear();
-      document.querySelectorAll('footer').forEach(el => {
-        el.innerHTML = el.innerHTML.replace('{{currentYear}}', year);
-      });
-    });
-
-    // Simple navigation (no smooth scroll)
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({ behavior: 'auto' });
-        }
-      });
-    });
+    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
