@@ -509,7 +509,7 @@ export const erichOwensCareerProfile: CareerProfile = {
       metrics: ["39 skills", "Open source", "Interactive website"],
       url: "https://someclaudeskills.com",
       github: "https://github.com/erichowens/some_claude_skills",
-      screenshot: "https://storage.googleapis.com/firecrawl-scrape-media/screenshot-41736ee2-b91a-46e1-8163-37a44fc762bf.png"
+      screenshot: "images/claude-skills-demo.gif"
     },
     {
       name: "Thermal Haptics for VR ('Fire and Ice')",
