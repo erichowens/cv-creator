@@ -40,6 +40,4 @@ coverage/
 *.tmp
 .cache/
 
-# Personal career data (keep private)
-examples/erich-owens-*.ts
-examples/generate-erich-owens.ts
+# Personal career data (now tracked for persistence)
