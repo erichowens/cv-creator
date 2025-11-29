@@ -42,3 +42,4 @@ coverage/
 
 # Personal career data (keep private)
 examples/erich-owens-*.ts
+examples/generate-erich-owens.ts
