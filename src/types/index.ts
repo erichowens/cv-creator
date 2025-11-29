@@ -46,6 +46,8 @@ export interface CareerProfile {
     keywords: string[];
     tone: string;
     colors?: string[];
+    url?: string;
+    ogImage?: string;
   };
 }
 
@@ -240,6 +242,8 @@ export interface PortfolioData {
     description: string;
     keywords: string[];
     og_image?: string;
+    url?: string;
+    ogImage?: string;
   };
 }
 
