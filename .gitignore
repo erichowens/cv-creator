@@ -39,3 +39,6 @@ coverage/
 # Temporary files
 *.tmp
 .cache/
+
+# Personal career data (keep private)
+examples/erich-owens-*.ts
