@@ -59,7 +59,9 @@
     /* Section headers */
     .section {
       margin-bottom: 18px;
-      page-break-inside: avoid;
+      /* Note: page-break-inside: avoid removed intentionally.
+         Individual entries have this property so jobs don't split,
+         but the section as a whole should flow across pages. */
     }
 
     .section-header {
@@ -159,13 +161,23 @@
 
     /* Optional sections */
     .certifications-list,
-    .awards-list {
+    .awards-list,
+    .patents-list {
       margin-left: 20px;
     }
 
     .certifications-list li,
-    .awards-list li {
+    .awards-list li,
+    .patents-list li {
       margin-bottom: 4px;
+    }
+
+    .patent-number {
+      font-weight: bold;
+    }
+
+    .patent-title {
+      font-style: italic;
     }
 
     /* Utilities */
@@ -250,6 +262,20 @@
     <ul class="certifications-list">
       {{#each certifications}}
       <li>{{this}}</li>
+      {{/each}}
+    </ul>
+  </div>
+  {{/if}}
+
+  <!-- Patents (if any) -->
+  {{#if patents}}
+  <div class="section">
+    <div class="section-header">Patents</div>
+    <ul class="patents-list">
+      {{#each patents}}
+      <li>
+        <span class="patent-number">{{number}}</span> — <span class="patent-title">{{title}}</span>{{#if inventors}}, {{inventors}}{{/if}} ({{date}})
+      </li>
       {{/each}}
     </ul>
   </div>

@@ -50,7 +50,8 @@ export interface CareerProfile {
 }
 
 export interface TimelineEvent {
-  date: string; // ISO date or "2020-01" format
+  date: string; // Start date: ISO date or "2020-01" format
+  endDate?: string; // End date: ISO date, "2020-01", or "Present"
   type: 'role_change' | 'patent' | 'award' | 'publication' | 'milestone' | 'certification';
   title: string; // Role title or event name
   company?: string;
@@ -58,6 +59,11 @@ export interface TimelineEvent {
   impact: string; // Quantifiable impact/achievement
   tags: string[]; // Technologies, skills used
   bullets?: string[]; // Additional achievement bullets
+  // Patent-specific fields
+  patentNumber?: string; // e.g., "US 10,123,456 B2"
+  inventors?: string[]; // Co-inventors
+  filingDate?: string; // When filed
+  issueDate?: string; // When granted
 }
 
 export interface Skill {
@@ -86,6 +92,7 @@ export interface Education {
   gpa?: string;
   honors?: string[];
   relevantCoursework?: string[];
+  details?: string; // Additional descriptive text
 }
 
 // ============================================================================
@@ -143,7 +150,15 @@ export interface ResumeData {
   // Optional sections
   certifications?: string[];
   awards?: string[];
+  patents?: PatentEntry[];
   publications?: string[];
+}
+
+export interface PatentEntry {
+  number: string; // e.g., "US 10,123,456 B2"
+  title: string;
+  date: string; // Issue date or filing date
+  inventors?: string; // "E. Owens, J. Smith, et al."
 }
 
 export interface ExperienceEntry {
@@ -197,6 +212,9 @@ export interface PortfolioData {
 
   // Skills section
   skills: SkillCategory[];
+
+  // Education section
+  education: Education[];
 
   // Contact section
   contact: {

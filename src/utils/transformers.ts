@@ -10,6 +10,7 @@ import {
   PortfolioData,
   ExperienceEntry,
   EducationEntry,
+  PatentEntry,
   PortfolioExperience,
   PortfolioProject,
   SkillCategory,
@@ -45,6 +46,7 @@ export function transformToResume(
     // Optional sections
     certifications: extractCertifications(profile.timelineEvents),
     awards: extractAwards(profile.timelineEvents),
+    patents: extractPatents(profile.timelineEvents),
     publications: extractPublications(profile.timelineEvents),
   };
 }
@@ -79,6 +81,8 @@ export function transformToPortfolio(
     projects: profile.projects.map(transformToPortfolioProject),
 
     skills: categorizeSkills(profile.skills),
+
+    education: profile.education || [],
 
     contact: {
       email: profile.email,
@@ -185,7 +189,7 @@ function transformExperience(events: TimelineEvent[]): ExperienceEntry[] {
     experiences.push({
       company: event.company || 'Unknown',
       role: event.title,
-      dates: formatDate(event.date),
+      dates: formatDate(event.date, event.endDate),
       bullets,
       technologies: event.tags,
     });
@@ -247,9 +251,9 @@ function findTopAchievement(events: TimelineEvent[]): string | null {
 }
 
 /**
- * Format date for display (e.g., "Jan 2020" or "2020")
+ * Format a single date for display (e.g., "Jan 2020" or "2020")
  */
-function formatDate(dateStr: string): string {
+function formatSingleDate(dateStr: string): string {
   // Handle "YYYY-MM" format
   if (/^\d{4}-\d{2}$/.test(dateStr)) {
     const [year, month] = dateStr.split('-');
@@ -265,8 +269,23 @@ function formatDate(dateStr: string): string {
     return dateStr;
   }
 
-  // Fallback
+  // Handle "Present" or other strings
   return dateStr;
+}
+
+/**
+ * Format date range for display (e.g., "Jan 2020 - Dec 2021" or "Jan 2020 - Present")
+ */
+function formatDate(startDate: string, endDate?: string): string {
+  const formattedStart = formatSingleDate(startDate);
+
+  if (!endDate) {
+    // Single date event (patents, awards, etc.)
+    return formattedStart;
+  }
+
+  const formattedEnd = endDate === 'Present' ? 'Present' : formatSingleDate(endDate);
+  return `${formattedStart} - ${formattedEnd}`;
 }
 
 /**
@@ -292,6 +311,22 @@ function extractAwards(events: TimelineEvent[]): string[] | undefined {
 }
 
 /**
+ * Extract patents from timeline events
+ */
+function extractPatents(events: TimelineEvent[]): PatentEntry[] | undefined {
+  const patents = events
+    .filter((e) => e.type === 'patent')
+    .map((e) => ({
+      number: e.patentNumber || 'Patent Pending',
+      title: e.title,
+      date: e.issueDate || e.date,
+      inventors: e.inventors?.join(', '),
+    }));
+
+  return patents.length > 0 ? patents : undefined;
+}
+
+/**
  * Extract publications from timeline events
  */
 function extractPublications(events: TimelineEvent[]): string[] | undefined {
@@ -311,7 +346,7 @@ function transformToPortfolioExperience(events: TimelineEvent[]): PortfolioExper
     .map((event) => ({
       company: event.company || 'Unknown',
       role: event.title,
-      dates: formatDate(event.date),
+      dates: formatDate(event.date, event.endDate),
       description: event.description,
       achievements: [event.impact, ...(event.bullets || [])],
       technologies: event.tags,

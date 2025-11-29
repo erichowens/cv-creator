@@ -13,7 +13,7 @@
   <meta property="og:description" content="{{meta.description}}">
 
   <style>
-    /* Reset and base styles */
+    /* Windows 3.1 Design System */
     * {
       margin: 0;
       padding: 0;
@@ -21,197 +21,294 @@
     }
 
     :root {
-      --primary-color: #2563eb;
-      --secondary-color: #1e40af;
-      --text-dark: #1f2937;
-      --text-light: #6b7280;
-      --bg-light: #f9fafb;
-      --border-color: #e5e7eb;
-      --spacing: 2rem;
+      /* Windows 3.1 Classic Colors */
+      --win31-title-bar: #000080;
+      --win31-blue: #0000AA;
+      --win31-cyan: #00AAAA;
+      --win31-light-gray: #C0C0C0;
+      --win31-dark-gray: #808080;
+      --win31-white: #FFFFFF;
+      --win31-black: #000000;
+
+      /* Happy Optimistic Accents */
+      --happy-yellow: #FFD700;
+      --happy-coral: #FF7F50;
+      --happy-mint: #98D8C8;
+      --warm-cream: #FAF7F0;
+
+      /* 3D Bevel System */
+      --bevel-light: #FFFFFF;
+      --bevel-dark: #000000;
+      --bevel-mid-light: #DFDFDF;
+      --bevel-mid-dark: #808080;
+
+      /* Typography */
+      --font-heading: Georgia, 'Garamond', serif;
+      --font-body: 'MS Sans Serif', Tahoma, sans-serif;
+      --font-code: 'Courier New', Courier, monospace;
+
+      /* Spacing (Windows 3.1 tight spacing) */
+      --spacing-xs: 2px;
+      --spacing-sm: 4px;
+      --spacing-md: 8px;
+      --spacing-lg: 16px;
+      --spacing-xl: 24px;
     }
 
     html {
-      scroll-behavior: smooth;
+      scroll-behavior: auto; /* No smooth scroll - instant like Windows */
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', 'Roboto', sans-serif;
-      line-height: 1.6;
-      color: var(--text-dark);
-      background: #fff;
+      font-family: var(--font-body);
+      font-size: 11pt;
+      line-height: 1.4;
+      color: var(--win31-black);
+      background: var(--win31-cyan);
+      background-image:
+        repeating-linear-gradient(
+          0deg,
+          rgba(0, 0, 0, 0.02) 0px,
+          rgba(0, 0, 0, 0.02) 1px,
+          transparent 1px,
+          transparent 2px
+        ),
+        repeating-linear-gradient(
+          90deg,
+          rgba(0, 0, 0, 0.02) 0px,
+          rgba(0, 0, 0, 0.02) 1px,
+          transparent 1px,
+          transparent 2px
+        );
+      padding: var(--spacing-lg);
+      min-height: 100vh;
     }
 
-    /* Navigation */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border-color);
-      padding: 1rem 2rem;
-      z-index: 1000;
+    /* Windows 3.1 Window Component */
+    .win31-window {
+      background: var(--win31-light-gray);
+      border-top: 2px solid var(--bevel-light);
+      border-left: 2px solid var(--bevel-light);
+      border-bottom: 2px solid var(--bevel-dark);
+      border-right: 2px solid var(--bevel-dark);
+      box-shadow: 2px 2px 0px var(--bevel-mid-dark);
+      margin-bottom: var(--spacing-lg);
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
-    nav ul {
+    .title-bar {
+      background: var(--win31-title-bar);
+      color: var(--win31-white);
+      padding: var(--spacing-xs) var(--spacing-sm);
+      font-weight: bold;
+      font-size: 11pt;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 18px;
+    }
+
+    .window-controls {
+      display: flex;
+      gap: var(--spacing-xs);
+    }
+
+    .window-btn {
+      background: var(--win31-light-gray);
+      border-top: 2px solid var(--bevel-light);
+      border-left: 2px solid var(--bevel-light);
+      border-bottom: 2px solid var(--bevel-dark);
+      border-right: 2px solid var(--bevel-dark);
+      width: 16px;
+      height: 14px;
+      font-size: 10pt;
+      line-height: 10px;
+      text-align: center;
+      cursor: pointer;
+      font-weight: bold;
+      color: var(--win31-black);
+    }
+
+    .window-btn:active {
+      border-top: 2px solid var(--bevel-dark);
+      border-left: 2px solid var(--bevel-dark);
+      border-bottom: 2px solid var(--bevel-light);
+      border-right: 2px solid var(--bevel-light);
+    }
+
+    .window-content {
+      background: var(--win31-white);
+      border-top: 2px solid var(--bevel-mid-dark);
+      border-left: 2px solid var(--bevel-mid-dark);
+      border-bottom: 2px solid var(--bevel-mid-light);
+      border-right: 2px solid var(--bevel-mid-light);
+      margin: var(--spacing-sm);
+      padding: var(--spacing-lg);
+    }
+
+    /* Typography */
+    h1, h2, h3, h4 {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      color: var(--win31-title-bar);
+      margin-bottom: var(--spacing-md);
+    }
+
+    h1 {
+      font-size: 32pt;
+      color: var(--happy-coral);
+      text-shadow: 2px 2px 0px var(--bevel-mid-dark);
+    }
+
+    h2 {
+      font-size: 24pt;
+      color: var(--win31-title-bar);
+      border-bottom: 2px solid var(--win31-title-bar);
+      padding-bottom: var(--spacing-sm);
+    }
+
+    h3 {
+      font-size: 16pt;
+      color: var(--win31-blue);
+    }
+
+    h4 {
+      font-size: 14pt;
+      color: var(--win31-blue);
+    }
+
+    p {
+      margin-bottom: var(--spacing-md);
+      line-height: 1.5;
+    }
+
+    /* Buttons */
+    .win31-btn {
+      background: var(--win31-light-gray);
+      border-top: 2px solid var(--bevel-light);
+      border-left: 2px solid var(--bevel-light);
+      border-bottom: 2px solid var(--bevel-dark);
+      border-right: 2px solid var(--bevel-dark);
+      padding: var(--spacing-sm) var(--spacing-lg);
+      font-family: var(--font-body);
+      font-size: 11pt;
+      font-weight: bold;
+      cursor: pointer;
+      display: inline-block;
+      text-decoration: none;
+      color: var(--win31-black);
+      margin-right: var(--spacing-md);
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .win31-btn:active {
+      border-top: 2px solid var(--bevel-dark);
+      border-left: 2px solid var(--bevel-dark);
+      border-bottom: 2px solid var(--bevel-light);
+      border-right: 2px solid var(--bevel-light);
+      padding-top: calc(var(--spacing-sm) + 2px);
+      padding-left: calc(var(--spacing-lg) + 2px);
+    }
+
+    .win31-btn-primary {
+      background: var(--win31-title-bar);
+      color: var(--win31-white);
+      font-weight: bold;
+      border-top: 2px solid var(--win31-blue);
+      border-left: 2px solid var(--win31-blue);
+      border-bottom: 2px solid var(--bevel-dark);
+      border-right: 2px solid var(--bevel-dark);
+    }
+
+    /* Navigation Menu Bar */
+    .menu-bar {
+      background: var(--win31-light-gray);
+      border-bottom: 2px solid var(--bevel-mid-dark);
+      padding: var(--spacing-xs);
+      margin-bottom: var(--spacing-lg);
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+      border-top: 2px solid var(--bevel-light);
+      border-left: 2px solid var(--bevel-light);
+      border-right: 2px solid var(--bevel-dark);
+      box-shadow: 2px 2px 0px var(--bevel-mid-dark);
+    }
+
+    .menu-bar ul {
       list-style: none;
       display: flex;
-      justify-content: center;
-      gap: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
+      gap: var(--spacing-md);
     }
 
-    nav a {
-      color: var(--text-dark);
+    .menu-bar a {
+      color: var(--win31-black);
       text-decoration: none;
-      font-weight: 500;
-      transition: color 0.2s;
+      padding: var(--spacing-xs) var(--spacing-sm);
+      display: block;
+      font-weight: normal;
     }
 
-    nav a:hover {
-      color: var(--primary-color);
+    .menu-bar a:hover {
+      background: var(--win31-title-bar);
+      color: var(--win31-white);
     }
 
-    /* Container */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    /* Section */
-    section {
-      padding: 5rem 0;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-    }
-
-    section:nth-child(even) {
-      background: var(--bg-light);
-    }
-
-    .section-title {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      color: var(--text-dark);
-    }
-
-    .section-subtitle {
-      font-size: 1.125rem;
-      color: var(--text-light);
-      margin-bottom: 3rem;
+    .menu-bar a:active {
+      background: var(--bevel-mid-dark);
     }
 
     /* Hero Section */
-    #hero {
+    .hero-content {
       text-align: center;
-      padding-top: 8rem;
+      padding: var(--spacing-xl) 0;
     }
 
-    #hero h1 {
-      font-size: 3.5rem;
-      font-weight: bold;
-      margin-bottom: 1rem;
-      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+    .headline {
+      font-size: 18pt;
+      color: var(--win31-dark-gray);
+      margin-bottom: var(--spacing-lg);
+      font-family: var(--font-heading);
+      font-weight: normal;
     }
 
-    #hero .headline {
-      font-size: 1.5rem;
-      color: var(--text-light);
-      margin-bottom: 1.5rem;
+    .tagline {
+      font-size: 12pt;
+      color: var(--win31-black);
+      margin-bottom: var(--spacing-lg);
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
-    #hero .tagline {
-      font-size: 1.125rem;
-      color: var(--text-light);
-      max-width: 600px;
-      margin: 0 auto 2rem;
+    /* Info Boxes */
+    .info-box {
+      background: var(--warm-cream);
+      border: 2px solid var(--happy-yellow);
+      padding: var(--spacing-md);
+      margin: var(--spacing-md) 0;
+      border-left: 4px solid var(--happy-yellow);
     }
 
-    .hero-links {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-top: 2rem;
+    .info-box strong {
+      color: var(--win31-title-bar);
     }
 
-    .btn {
-      display: inline-block;
-      padding: 0.75rem 2rem;
-      border-radius: 0.5rem;
-      text-decoration: none;
-      font-weight: 600;
-      transition: all 0.2s;
-    }
-
-    .btn-primary {
-      background: var(--primary-color);
-      color: white;
-    }
-
-    .btn-primary:hover {
-      background: var(--secondary-color);
-      transform: translateY(-2px);
-    }
-
-    .btn-secondary {
-      background: transparent;
-      color: var(--primary-color);
-      border: 2px solid var(--primary-color);
-    }
-
-    .btn-secondary:hover {
-      background: var(--primary-color);
-      color: white;
-    }
-
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-
-    .social-links a {
-      color: var(--text-light);
-      font-size: 1.5rem;
-      transition: color 0.2s;
-    }
-
-    .social-links a:hover {
-      color: var(--primary-color);
-    }
-
-    /* About Section */
-    #about .content {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 3rem;
-      align-items: start;
-    }
-
+    /* List Styles */
     .differentiators {
-      margin-top: 2rem;
-    }
-
-    .differentiators h3 {
-      font-size: 1.25rem;
-      margin-bottom: 1rem;
+      margin: var(--spacing-lg) 0;
     }
 
     .differentiators ul {
       list-style: none;
+      margin-left: 0;
     }
 
     .differentiators li {
-      padding: 0.5rem 0;
-      padding-left: 1.5rem;
+      padding: var(--spacing-sm) 0;
+      padding-left: var(--spacing-lg);
       position: relative;
     }
 
@@ -219,408 +316,501 @@
       content: "✓";
       position: absolute;
       left: 0;
-      color: var(--primary-color);
+      color: var(--happy-coral);
       font-weight: bold;
     }
 
-    /* Experience Section */
-    .experience-timeline {
-      position: relative;
-      padding-left: 2rem;
-    }
-
-    .experience-timeline:before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: var(--border-color);
-    }
-
+    /* Experience Timeline */
     .experience-item {
-      position: relative;
-      margin-bottom: 3rem;
-    }
-
-    .experience-item:before {
-      content: '';
-      position: absolute;
-      left: -2.5rem;
-      top: 0.5rem;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: var(--primary-color);
-      border: 3px solid white;
-    }
-
-    .experience-header {
-      margin-bottom: 0.5rem;
+      margin-bottom: var(--spacing-xl);
+      padding: var(--spacing-md);
+      background: var(--warm-cream);
+      border-top: 2px solid var(--bevel-mid-dark);
+      border-left: 2px solid var(--bevel-mid-dark);
+      border-bottom: 2px solid var(--bevel-mid-light);
+      border-right: 2px solid var(--bevel-mid-light);
     }
 
     .experience-role {
-      font-size: 1.25rem;
+      font-size: 14pt;
       font-weight: bold;
-      color: var(--text-dark);
+      color: var(--win31-title-bar);
+      font-family: var(--font-heading);
     }
 
     .experience-company {
-      font-size: 1.125rem;
-      color: var(--primary-color);
+      font-size: 12pt;
+      color: var(--happy-coral);
+      font-weight: bold;
     }
 
     .experience-dates {
-      font-size: 0.875rem;
-      color: var(--text-light);
+      font-size: 10pt;
+      color: var(--win31-dark-gray);
       font-style: italic;
-    }
-
-    .experience-description {
-      margin: 0.5rem 0;
-      color: var(--text-light);
+      margin-bottom: var(--spacing-sm);
     }
 
     .achievements {
-      list-style: disc;
-      margin-left: 1.5rem;
-      margin-top: 0.5rem;
+      list-style: square;
+      margin-left: var(--spacing-lg);
+      margin-top: var(--spacing-sm);
     }
 
     .achievements li {
-      margin-bottom: 0.25rem;
+      margin-bottom: var(--spacing-xs);
     }
 
+    /* Tech Tags */
     .tech-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 0.75rem;
+      gap: var(--spacing-sm);
+      margin-top: var(--spacing-md);
     }
 
     .tech-tag {
-      background: var(--bg-light);
-      padding: 0.25rem 0.75rem;
-      border-radius: 0.25rem;
-      font-size: 0.875rem;
-      color: var(--text-dark);
-      border: 1px solid var(--border-color);
+      background: var(--win31-light-gray);
+      border-top: 1px solid var(--bevel-light);
+      border-left: 1px solid var(--bevel-light);
+      border-bottom: 1px solid var(--bevel-dark);
+      border-right: 1px solid var(--bevel-dark);
+      padding: var(--spacing-xs) var(--spacing-sm);
+      font-size: 10pt;
+      font-family: var(--font-code);
     }
 
-    /* Projects Section */
+    /* Projects Grid */
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: var(--spacing-lg);
+      margin-top: var(--spacing-lg);
     }
 
     .project-card {
-      background: white;
-      border-radius: 0.5rem;
-      overflow: hidden;
-      border: 1px solid var(--border-color);
-      transition: transform 0.2s, box-shadow 0.2s;
+      background: var(--win31-light-gray);
+      border-top: 2px solid var(--bevel-light);
+      border-left: 2px solid var(--bevel-light);
+      border-bottom: 2px solid var(--bevel-dark);
+      border-right: 2px solid var(--bevel-dark);
     }
 
-    .project-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    }
-
-    .project-screenshot {
-      width: 100%;
-      height: 200px;
-      background: var(--bg-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-light);
-    }
-
-    .project-screenshot img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    .project-title-bar {
+      background: var(--win31-title-bar);
+      color: var(--win31-white);
+      padding: var(--spacing-xs) var(--spacing-sm);
+      font-weight: bold;
+      font-size: 11pt;
     }
 
     .project-content {
-      padding: 1.5rem;
-    }
-
-    .project-title {
-      font-size: 1.25rem;
-      font-weight: bold;
-      margin-bottom: 0.5rem;
+      background: var(--win31-white);
+      border-top: 2px solid var(--bevel-mid-dark);
+      border-left: 2px solid var(--bevel-mid-dark);
+      border-bottom: 2px solid var(--bevel-mid-light);
+      border-right: 2px solid var(--bevel-mid-light);
+      margin: var(--spacing-sm);
+      padding: var(--spacing-md);
     }
 
     .project-description {
-      color: var(--text-light);
-      margin-bottom: 1rem;
+      margin: var(--spacing-sm) 0;
     }
 
     .project-impact {
-      font-weight: 500;
-      color: var(--primary-color);
-      margin-bottom: 1rem;
+      color: var(--happy-coral);
+      font-weight: bold;
+      margin: var(--spacing-sm) 0;
     }
 
-    .project-links {
-      display: flex;
-      gap: 1rem;
+    .project-screenshot {
+      margin: var(--spacing-md) 0;
+      border-top: 2px solid var(--bevel-dark);
+      border-left: 2px solid var(--bevel-dark);
+      border-bottom: 2px solid var(--bevel-light);
+      border-right: 2px solid var(--bevel-light);
+      padding: 2px;
+      background: var(--win31-dark-gray);
     }
 
-    .project-links a {
-      color: var(--primary-color);
-      text-decoration: none;
-      font-size: 0.875rem;
-      font-weight: 500;
+    .project-screenshot img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-top: 1px solid var(--bevel-mid-dark);
+      border-left: 1px solid var(--bevel-mid-dark);
+      border-bottom: 1px solid var(--bevel-mid-light);
+      border-right: 1px solid var(--bevel-mid-light);
     }
 
-    /* Skills Section */
-    .skills-categories {
-      display: grid;
-      gap: 2rem;
-    }
-
+    /* Skills Grid */
     .skill-category {
-      background: white;
-      padding: 2rem;
-      border-radius: 0.5rem;
-      border: 1px solid var(--border-color);
+      background: var(--win31-light-gray);
+      border-top: 2px solid var(--bevel-light);
+      border-left: 2px solid var(--bevel-light);
+      border-bottom: 2px solid var(--bevel-dark);
+      border-right: 2px solid var(--bevel-dark);
+      margin-bottom: var(--spacing-lg);
     }
 
-    .skill-category h3 {
-      font-size: 1.25rem;
-      margin-bottom: 1.5rem;
-      color: var(--primary-color);
+    .skill-category-title {
+      background: var(--win31-title-bar);
+      color: var(--win31-white);
+      padding: var(--spacing-xs) var(--spacing-sm);
+      font-weight: bold;
+      font-size: 11pt;
+    }
+
+    .skill-category-content {
+      background: var(--win31-white);
+      border-top: 2px solid var(--bevel-mid-dark);
+      border-left: 2px solid var(--bevel-mid-dark);
+      border-bottom: 2px solid var(--bevel-mid-light);
+      border-right: 2px solid var(--bevel-mid-light);
+      margin: var(--spacing-sm);
+      padding: var(--spacing-md);
     }
 
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 1rem;
+      gap: var(--spacing-md);
     }
 
     .skill-item {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
+      margin-bottom: var(--spacing-sm);
     }
 
     .skill-name {
-      font-weight: 500;
       display: flex;
       justify-content: space-between;
+      margin-bottom: var(--spacing-xs);
+      font-weight: bold;
     }
 
     .skill-years {
-      font-size: 0.875rem;
-      color: var(--text-light);
+      font-weight: normal;
+      color: var(--win31-dark-gray);
+      font-size: 10pt;
     }
 
     .skill-bar {
-      height: 6px;
-      background: var(--border-color);
-      border-radius: 3px;
+      height: 16px;
+      background: var(--win31-white);
+      border-top: 2px solid var(--bevel-mid-dark);
+      border-left: 2px solid var(--bevel-mid-dark);
+      border-bottom: 2px solid var(--bevel-mid-light);
+      border-right: 2px solid var(--bevel-mid-light);
       overflow: hidden;
     }
 
     .skill-fill {
       height: 100%;
-      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-      transition: width 0.5s ease;
+      background: var(--win31-title-bar);
+      transition: none; /* No smooth animations */
     }
 
-    /* Contact Section */
-    #contact {
-      text-align: center;
+    /* Education Styles */
+    .education-item {
+      margin-bottom: var(--spacing-lg);
+      padding-bottom: var(--spacing-lg);
+      border-bottom: 1px solid var(--win31-dark-gray);
     }
 
-    .contact-info {
-      margin-top: 2rem;
-      font-size: 1.125rem;
+    .education-item:last-child {
+      border-bottom: none;
     }
 
-    .contact-info a {
-      color: var(--primary-color);
-      text-decoration: none;
-      font-weight: 500;
+    .education-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: var(--spacing-sm);
     }
 
+    .education-header h3 {
+      font-family: var(--font-heading);
+      font-size: 14pt;
+      font-weight: bold;
+      color: var(--win31-title-bar);
+      margin: 0;
+    }
+
+    .education-year {
+      font-family: var(--font-body);
+      font-size: 10pt;
+      font-weight: bold;
+      color: var(--win31-dark-gray);
+    }
+
+    .education-institution {
+      font-family: var(--font-body);
+      font-size: 11pt;
+      color: var(--win31-black);
+      margin-bottom: var(--spacing-xs);
+    }
+
+    .education-details {
+      font-size: 10pt;
+      color: var(--win31-dark-gray);
+      line-height: 1.4;
+      margin-top: var(--spacing-sm);
+    }
+
+    /* Status Bar */
+    .status-bar {
+      background: var(--win31-light-gray);
+      border-top: 2px solid var(--bevel-light);
+      padding: var(--spacing-xs) var(--spacing-sm);
+      display: flex;
+      gap: var(--spacing-lg);
+      max-width: 1000px;
+      margin: var(--spacing-lg) auto 0;
+      font-size: 10pt;
+    }
+
+    .status-item {
+      border-top: 2px solid var(--bevel-mid-dark);
+      border-left: 2px solid var(--bevel-mid-dark);
+      border-bottom: 2px solid var(--bevel-light);
+      border-right: 2px solid var(--bevel-light);
+      padding: var(--spacing-xs) var(--spacing-sm);
+    }
+
+    /* Availability Badge */
     .availability {
       display: inline-block;
-      background: #10b981;
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 2rem;
-      margin-top: 1rem;
+      background: var(--happy-mint);
+      border: 2px solid var(--win31-dark-gray);
+      padding: var(--spacing-sm) var(--spacing-md);
+      font-weight: bold;
+      margin: var(--spacing-md) 0;
     }
 
     /* Footer */
     footer {
-      background: var(--text-dark);
-      color: white;
+      background: var(--win31-light-gray);
+      border-top: 2px solid var(--bevel-light);
       text-align: center;
-      padding: 2rem;
+      padding: var(--spacing-lg);
+      margin-top: var(--spacing-xl);
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 10pt;
+      color: var(--win31-dark-gray);
+    }
+
+    /* Social Links */
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: var(--spacing-md);
+      margin-top: var(--spacing-lg);
+    }
+
+    .social-links a {
+      color: var(--win31-title-bar);
+      text-decoration: underline;
+      font-weight: bold;
+    }
+
+    .social-links a:hover {
+      color: var(--happy-coral);
     }
 
     /* Responsive */
     @media (max-width: 768px) {
-      #hero h1 {
-        font-size: 2.5rem;
+      body {
+        padding: var(--spacing-sm);
       }
 
-      #about .content {
-        grid-template-columns: 1fr;
+      h1 {
+        font-size: 24pt;
+      }
+
+      h2 {
+        font-size: 18pt;
       }
 
       .projects-grid {
         grid-template-columns: 1fr;
       }
 
-      nav ul {
+      .menu-bar ul {
         flex-wrap: wrap;
-        gap: 1rem;
+        gap: var(--spacing-sm);
       }
 
-      section {
-        min-height: auto;
-        padding: 3rem 0;
+      .status-bar {
+        flex-direction: column;
+        gap: var(--spacing-sm);
       }
+    }
+
+    /* Remove smooth animations */
+    * {
+      transition: none !important;
+      animation: none !important;
     }
   </style>
 </head>
 <body>
-  <!-- Navigation -->
-  <nav>
+  <!-- Menu Bar -->
+  <nav class="menu-bar">
     <ul>
       <li><a href="#hero">Home</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#skills">Skills</a></li>
+      <li><a href="#education">Education</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
 
-  <!-- Hero Section -->
-  <section id="hero">
-    <div class="container">
-      <h1>{{hero.name}}</h1>
-      <p class="headline">{{hero.headline}}</p>
-      <p class="tagline">{{hero.tagline}}</p>
-
-      <div class="hero-links">
-        <a href="{{hero.links.resume}}" class="btn btn-primary" download>Download Resume</a>
-        <a href="#contact" class="btn btn-secondary">Get in Touch</a>
-      </div>
-
-      <div class="social-links">
-        {{#if hero.links.linkedin}}
-        <a href="{{hero.links.linkedin}}" target="_blank" aria-label="LinkedIn">🔗 LinkedIn</a>
-        {{/if}}
-        {{#if hero.links.github}}
-        <a href="{{hero.links.github}}" target="_blank" aria-label="GitHub">💻 GitHub</a>
-        {{/if}}
-        <a href="mailto:{{hero.links.email}}" aria-label="Email">✉️ Email</a>
+  <!-- Hero Window -->
+  <div class="win31-window" id="hero">
+    <div class="title-bar">
+      <span>{{hero.name}} - Portfolio</span>
+      <div class="window-controls">
+        <button class="window-btn">_</button>
+        <button class="window-btn">□</button>
+        <button class="window-btn">×</button>
       </div>
     </div>
-  </section>
+    <div class="window-content">
+      <div class="hero-content">
+        <h1>{{hero.name}}</h1>
+        <p class="headline">{{hero.headline}}</p>
+        <p class="tagline">{{hero.tagline}}</p>
 
-  <!-- About Section -->
-  <section id="about">
-    <div class="container">
-      <h2 class="section-title">About Me</h2>
-      <div class="content">
         <div>
-          <p>{{about.summary}}</p>
+          <a href="{{hero.links.resume}}" class="win31-btn win31-btn-primary" download>Download Resume</a>
+          <a href="#contact" class="win31-btn">Get in Touch</a>
+        </div>
 
-          {{#if about.differentiators}}
-          <div class="differentiators">
-            <h3>What Sets Me Apart</h3>
-            <ul>
-              {{#each about.differentiators}}
-              <li>{{this}}</li>
-              {{/each}}
-            </ul>
-          </div>
+        <div class="social-links">
+          {{#if hero.links.linkedin}}
+          <a href="{{hero.links.linkedin}}" target="_blank">LinkedIn</a>
           {{/if}}
+          {{#if hero.links.github}}
+          <a href="{{hero.links.github}}" target="_blank">GitHub</a>
+          {{/if}}
+          <a href="mailto:{{hero.links.email}}">Email</a>
         </div>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- Experience Section -->
-  <section id="experience">
-    <div class="container">
-      <h2 class="section-title">Work Experience</h2>
-      <p class="section-subtitle">My professional journey and key achievements</p>
-
-      <div class="experience-timeline">
-        {{#each experience}}
-        <div class="experience-item">
-          <div class="experience-header">
-            <div class="experience-role">{{role}}</div>
-            <div class="experience-company">{{company}}</div>
-            <div class="experience-dates">{{dates}}</div>
-          </div>
-          <p class="experience-description">{{description}}</p>
-
-          {{#if achievements}}
-          <ul class="achievements">
-            {{#each achievements}}
-            <li>{{this}}</li>
-            {{/each}}
-          </ul>
-          {{/if}}
-
-          {{#if technologies}}
-          <div class="tech-tags">
-            {{#each technologies}}
-            <span class="tech-tag">{{this}}</span>
-            {{/each}}
-          </div>
-          {{/if}}
-        </div>
-        {{/each}}
+  <!-- About Window -->
+  <div class="win31-window" id="about">
+    <div class="title-bar">
+      <span>About Me</span>
+      <div class="window-controls">
+        <button class="window-btn">_</button>
+        <button class="window-btn">□</button>
+        <button class="window-btn">×</button>
       </div>
     </div>
-  </section>
+    <div class="window-content">
+      <h2>About Me</h2>
+      <p>{{about.summary}}</p>
 
-  <!-- Projects Section -->
-  <section id="projects">
-    <div class="container">
-      <h2 class="section-title">Featured Projects</h2>
-      <p class="section-subtitle">Showcase of my work and side projects</p>
+      {{#if about.differentiators}}
+      <div class="differentiators">
+        <h3>What Sets Me Apart</h3>
+        <ul>
+          {{#each about.differentiators}}
+          <li>{{this}}</li>
+          {{/each}}
+        </ul>
+      </div>
+      {{/if}}
+    </div>
+  </div>
+
+  <!-- Experience Window -->
+  <div class="win31-window" id="experience">
+    <div class="title-bar">
+      <span>Work Experience</span>
+      <div class="window-controls">
+        <button class="window-btn">_</button>
+        <button class="window-btn">□</button>
+        <button class="window-btn">×</button>
+      </div>
+    </div>
+    <div class="window-content">
+      <h2>Work Experience</h2>
+
+      {{#each experience}}
+      <div class="experience-item">
+        <div class="experience-role">{{role}}</div>
+        <div class="experience-company">{{company}}</div>
+        <div class="experience-dates">{{dates}}</div>
+        <p>{{description}}</p>
+
+        {{#if achievements}}
+        <ul class="achievements">
+          {{#each achievements}}
+          <li>{{this}}</li>
+          {{/each}}
+        </ul>
+        {{/if}}
+
+        {{#if technologies}}
+        <div class="tech-tags">
+          {{#each technologies}}
+          <span class="tech-tag">{{this}}</span>
+          {{/each}}
+        </div>
+        {{/if}}
+      </div>
+      {{/each}}
+    </div>
+  </div>
+
+  <!-- Projects Window -->
+  <div class="win31-window" id="projects">
+    <div class="title-bar">
+      <span>Featured Projects</span>
+      <div class="window-controls">
+        <button class="window-btn">_</button>
+        <button class="window-btn">□</button>
+        <button class="window-btn">×</button>
+      </div>
+    </div>
+    <div class="window-content">
+      <h2>Featured Projects</h2>
 
       <div class="projects-grid">
         {{#each projects}}
         <div class="project-card">
-          <div class="project-screenshot">
-            {{#if screenshot}}
-            <img src="{{screenshot}}" alt="{{name}} screenshot">
-            {{else}}
-            📊 Project Screenshot
-            {{/if}}
-          </div>
+          <div class="project-title-bar">{{name}}</div>
           <div class="project-content">
-            <h3 class="project-title">{{name}}</h3>
+            {{#if screenshot}}
+            <div class="project-screenshot">
+              <img src="{{screenshot}}" alt="{{name}} screenshot" loading="lazy">
+            </div>
+            {{/if}}
             <p class="project-description">{{description}}</p>
             <p class="project-impact">💡 {{impact}}</p>
 
+            {{#if technologies}}
             <div class="tech-tags">
               {{#each technologies}}
               <span class="tech-tag">{{this}}</span>
               {{/each}}
             </div>
+            {{/if}}
 
-            <div class="project-links">
+            <div style="margin-top: var(--spacing-md);">
               {{#if url}}
-              <a href="{{url}}" target="_blank">View Live →</a>
+              <a href="{{url}}" class="win31-btn" target="_blank">View Live</a>
               {{/if}}
               {{#if github}}
-              <a href="{{github}}" target="_blank">GitHub →</a>
+              <a href="{{github}}" class="win31-btn" target="_blank">GitHub</a>
               {{/if}}
             </div>
           </div>
@@ -628,18 +818,25 @@
         {{/each}}
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- Skills Section -->
-  <section id="skills">
-    <div class="container">
-      <h2 class="section-title">Skills & Expertise</h2>
-      <p class="section-subtitle">Technologies and tools I work with</p>
+  <!-- Skills Window -->
+  <div class="win31-window" id="skills">
+    <div class="title-bar">
+      <span>Skills & Expertise</span>
+      <div class="window-controls">
+        <button class="window-btn">_</button>
+        <button class="window-btn">□</button>
+        <button class="window-btn">×</button>
+      </div>
+    </div>
+    <div class="window-content">
+      <h2>Skills & Expertise</h2>
 
-      <div class="skills-categories">
-        {{#each skills}}
-        <div class="skill-category">
-          <h3>{{category}}</h3>
+      {{#each skills}}
+      <div class="skill-category">
+        <div class="skill-category-title">{{category}}</div>
+        <div class="skill-category-content">
           <div class="skills-grid">
             {{#each skills}}
             <div class="skill-item">
@@ -654,39 +851,83 @@
             {{/each}}
           </div>
         </div>
-        {{/each}}
+      </div>
+      {{/each}}
+    </div>
+  </div>
+
+  <!-- Education Window -->
+  <div class="win31-window" id="education">
+    <div class="title-bar">
+      <span>Education & Credentials</span>
+      <div class="window-controls">
+        <button class="window-btn">_</button>
+        <button class="window-btn">□</button>
+        <button class="window-btn">×</button>
       </div>
     </div>
-  </section>
+    <div class="window-content">
+      <h2>Academic Background</h2>
 
-  <!-- Contact Section -->
-  <section id="contact">
-    <div class="container">
-      <h2 class="section-title">Let's Connect</h2>
-      <p class="section-subtitle">I'm always open to new opportunities and collaborations</p>
+      {{#each education}}
+      <div class="education-item">
+        <div class="education-header">
+          <h3>{{degree}}</h3>
+          <span class="education-year">{{year}}</span>
+        </div>
+        <div class="education-institution">{{institution}}</div>
+        {{#if details}}
+        <div class="education-details">{{details}}</div>
+        {{/if}}
+      </div>
+      {{/each}}
+    </div>
+  </div>
+
+  <!-- Contact Window -->
+  <div class="win31-window" id="contact">
+    <div class="title-bar">
+      <span>Let's Connect</span>
+      <div class="window-controls">
+        <button class="window-btn">_</button>
+        <button class="window-btn">□</button>
+        <button class="window-btn">×</button>
+      </div>
+    </div>
+    <div class="window-content">
+      <h2>Let's Connect</h2>
+      <p>I'm always open to new opportunities and collaborations</p>
 
       <div class="availability">✅ {{contact.availability}}</div>
 
-      <div class="contact-info">
-        <p>Email: <a href="mailto:{{contact.email}}">{{contact.email}}</a></p>
+      <div class="info-box">
+        <p><strong>Email:</strong> <a href="mailto:{{contact.email}}">{{contact.email}}</a></p>
         {{#if contact.linkedin}}
-        <p>LinkedIn: <a href="{{contact.linkedin}}" target="_blank">View Profile</a></p>
+        <p><strong>LinkedIn:</strong> <a href="{{contact.linkedin}}" target="_blank">View Profile</a></p>
         {{/if}}
         {{#if contact.github}}
-        <p>GitHub: <a href="{{contact.github}}" target="_blank">@{{contact.github}}</a></p>
+        <p><strong>GitHub:</strong> <a href="{{contact.github}}" target="_blank">{{contact.github}}</a></p>
         {{/if}}
       </div>
     </div>
-  </section>
+  </div>
+
+  <!-- Status Bar -->
+  <div class="status-bar">
+    <span class="status-item">12 Years Experience</span>
+    <span class="status-item">12 Patents</span>
+    <span class="status-item">Ready to Ship</span>
+    <span class="status-item">Built with Windows 3.1 Style</span>
+  </div>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; {{currentYear}} {{hero.name}}. All rights reserved.</p>
-    <p>Built with care • Powered by passion</p>
+    <p>© {{currentYear}} {{hero.name}}. All rights reserved.</p>
+    <p>Built with nostalgia • Powered by passion • Windows 3.1 inspired</p>
   </footer>
 
   <script>
-    // Add current year to footer
+    // Add current year
     document.addEventListener('DOMContentLoaded', function() {
       const year = new Date().getFullYear();
       document.querySelectorAll('footer').forEach(el => {
@@ -694,40 +935,15 @@
       });
     });
 
-    // Smooth scroll for navigation
+    // Simple navigation (no smooth scroll)
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
+          target.scrollIntoView({ behavior: 'auto' });
         }
       });
-    });
-
-    // Fade-in animation on scroll (simple version)
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -100px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-        }
-      });
-    }, observerOptions);
-
-    document.querySelectorAll('section').forEach(section => {
-      section.style.opacity = '0';
-      section.style.transform = 'translateY(20px)';
-      section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-      observer.observe(section);
     });
   </script>
 </body>
