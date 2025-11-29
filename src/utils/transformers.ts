@@ -28,6 +28,7 @@ export function transformToResume(
   return {
     header: {
       name: profile.name,
+      headline: strategy?.positioning.headline || profile.headline,
       email: profile.email,
       phone: profile.phone,
       location: profile.location,
@@ -105,40 +106,20 @@ export function transformToPortfolio(
 }
 
 /**
- * Generate professional summary (2-4 lines)
- * Formula: [Seniority] + [Focus] with [Years]. [Key Achievement]. Expertise in [Skills]. [Goal].
+ * Generate professional summary
+ * Uses the full profile summary for comprehensive coverage
  */
 function generateProfessionalSummary(
   profile: CareerProfile,
   strategy?: PositioningStrategy
 ): string {
-  const parts: string[] = [];
-
-  // Use strategic headline if available
-  if (strategy?.positioning.headline) {
-    parts.push(strategy.positioning.headline);
-  } else {
-    parts.push(profile.headline);
+  // Use the full profile summary - it's already well-written
+  // Add positioning headline if available for extra punch
+  if (strategy?.positioning.headline && strategy?.positioning.messaging) {
+    return `${strategy.positioning.headline}. ${profile.summary}`;
   }
 
-  // Add key achievement if available
-  const topAchievement = findTopAchievement(profile.timelineEvents);
-  if (topAchievement) {
-    parts.push(topAchievement);
-  }
-
-  // Add expertise
-  const topSkills = selectCoreSkills(profile.skills, 5);
-  if (topSkills.length > 0) {
-    parts.push(`Expertise in ${topSkills.join(', ')}.`);
-  }
-
-  // Add goal/aspiration
-  if (profile.aspirations.shortTerm.length > 0) {
-    parts.push(profile.aspirations.shortTerm[0]);
-  }
-
-  return parts.join(' ');
+  return profile.summary;
 }
 
 /**
@@ -174,6 +155,7 @@ function selectCoreSkills(skills: CareerProfile['skills'], limit: number): strin
 
 /**
  * Transform timeline events into work experience entries
+ * Creates comprehensive bullets from description, impact, and any additional bullets
  */
 function transformExperience(events: TimelineEvent[]): ExperienceEntry[] {
   // Filter to role_change events only
@@ -183,10 +165,28 @@ function transformExperience(events: TimelineEvent[]): ExperienceEntry[] {
   const experiences: ExperienceEntry[] = [];
 
   for (const event of roleEvents) {
-    const bullets = formatBullets([
-      event.impact,
-      ...(event.bullets || []),
-    ]);
+    // Build comprehensive bullets from all available content
+    const rawBullets: string[] = [];
+
+    // Add description as a bullet (often has rich context)
+    if (event.description) {
+      // Split description on semicolons to create multiple bullets
+      const descParts = event.description.split(';').map(p => p.trim()).filter(p => p.length > 0);
+      rawBullets.push(...descParts);
+    }
+
+    // Add impact as bullet(s)
+    if (event.impact) {
+      const impactParts = event.impact.split(';').map(p => p.trim()).filter(p => p.length > 0);
+      rawBullets.push(...impactParts);
+    }
+
+    // Add any explicit bullets
+    if (event.bullets) {
+      rawBullets.push(...event.bullets);
+    }
+
+    const bullets = formatBullets(rawBullets);
 
     experiences.push({
       company: event.company || 'Unknown',

@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{header.name}} - Resume</title>
   <style>
+    /* ============================================
+       OXKNIT MOD Resume - Design System
+       Matches portfolio color blocking aesthetic
+       ============================================ */
+
     /* Reset and base styles */
     * {
       margin: 0;
@@ -15,14 +20,24 @@
     /* Print-optimized page settings */
     @page {
       size: A4;
-      margin: 0.75in;
+      margin: 0.6in;
+    }
+
+    :root {
+      --block-coral: #E85A4F;
+      --block-navy: #1A1A2E;
+      --block-teal: #2D6A6A;
+      --block-mustard: #E5A835;
+      --block-cream: #F5F5F0;
+      --text-primary: #1A1A2E;
+      --text-secondary: #4A4A5A;
     }
 
     body {
-      font-family: Calibri, 'Trebuchet MS', Arial, sans-serif;
-      font-size: 11pt;
-      line-height: 1.4;
-      color: #000;
+      font-family: 'Archivo', Calibri, 'Helvetica Neue', Arial, sans-serif;
+      font-size: 10pt;
+      line-height: 1.45;
+      color: var(--text-primary);
       background: #fff;
     }
 
@@ -31,81 +46,96 @@
       page-break-inside: avoid;
     }
 
-    /* Header section */
+    /* Header section - Bold coral block */
     .header {
-      text-align: center;
-      margin-bottom: 20px;
-      padding-bottom: 10px;
-      border-bottom: 2px solid #000;
+      background: var(--block-coral);
+      color: white;
+      padding: 24px 24px;
+      margin: 0 0 20px 0;
+      text-align: left;
     }
 
     .header h1 {
-      font-size: 24pt;
-      font-weight: bold;
+      font-size: 26pt;
+      font-weight: 800;
+      margin-bottom: 4px;
+      letter-spacing: -0.02em;
+    }
+
+    .header .headline {
+      font-size: 11pt;
+      font-weight: 500;
+      opacity: 0.9;
       margin-bottom: 8px;
-      letter-spacing: 0.5px;
     }
 
     .header .contact {
-      font-size: 10pt;
-      color: #333;
+      font-size: 9pt;
+      opacity: 0.85;
     }
 
     .header .contact a {
-      color: #0066cc;
+      color: white;
       text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,0.3);
     }
 
-    /* Section headers */
+    /* Section headers - Bold geometric */
     .section {
-      margin-bottom: 18px;
-      /* Note: page-break-inside: avoid removed intentionally.
-         Individual entries have this property so jobs don't split,
-         but the section as a whole should flow across pages. */
+      margin-bottom: 16px;
     }
 
     .section-header {
-      font-size: 13pt;
-      font-weight: bold;
+      font-size: 10pt;
+      font-weight: 700;
       text-transform: uppercase;
-      border-bottom: 1px solid #000;
+      letter-spacing: 0.1em;
+      color: var(--block-navy);
+      border-bottom: 3px solid var(--block-coral);
       padding-bottom: 4px;
       margin-bottom: 10px;
-      letter-spacing: 1px;
     }
 
-    /* Professional Summary */
+    /* Professional Summary - Teal accent */
     .summary {
-      line-height: 1.5;
-      text-align: justify;
+      line-height: 1.55;
+      text-align: left;
+      padding-left: 12px;
+      border-left: 3px solid var(--block-teal);
+      color: var(--text-secondary);
     }
 
-    /* Skills section */
+    /* Skills section - Inline with coral bullets */
     .skills-list {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      line-height: 1.6;
+      gap: 6px;
+      line-height: 1.5;
+      list-style: none;
     }
 
     .skills-list li {
       display: inline;
-      list-style: none;
+      font-size: 9.5pt;
     }
 
     .skills-list li:after {
       content: " •";
-      margin-left: 8px;
+      color: var(--block-coral);
+      margin-left: 6px;
+      font-weight: bold;
     }
 
     .skills-list li:last-child:after {
       content: "";
     }
 
-    /* Experience entries */
+    /* Experience entries - Navy accents */
     .experience-entry {
       margin-bottom: 14px;
       page-break-inside: avoid;
+      padding-left: 12px;
+      border-left: 2px solid var(--block-navy);
     }
 
     .experience-header {
@@ -115,34 +145,54 @@
     }
 
     .experience-title {
-      font-weight: bold;
-      font-size: 11.5pt;
+      font-weight: 700;
+      font-size: 11pt;
+      color: var(--block-navy);
     }
 
     .experience-company {
-      font-weight: bold;
-      font-size: 11pt;
+      font-weight: 600;
+      font-size: 10pt;
+      color: var(--block-teal);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
     }
 
     .experience-dates {
-      font-size: 10pt;
-      color: #333;
-      font-style: italic;
+      font-size: 9pt;
+      color: var(--text-secondary);
+      font-weight: 500;
+      background: var(--block-cream);
+      padding: 2px 8px;
     }
 
     .experience-bullets {
       margin-top: 6px;
-      margin-left: 20px;
+      margin-left: 16px;
+      list-style: none;
     }
 
     .experience-bullets li {
-      margin-bottom: 4px;
+      margin-bottom: 3px;
       line-height: 1.4;
+      font-size: 9.5pt;
+      position: relative;
+      padding-left: 12px;
+    }
+
+    .experience-bullets li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--block-mustard);
+      font-weight: bold;
     }
 
     /* Education entries */
     .education-entry {
-      margin-bottom: 10px;
+      margin-bottom: 8px;
+      padding-left: 12px;
+      border-left: 2px solid var(--block-mustard);
     }
 
     .education-header {
@@ -151,33 +201,76 @@
     }
 
     .education-degree {
-      font-weight: bold;
+      font-weight: 700;
+      color: var(--block-navy);
+    }
+
+    .education-institution {
+      color: var(--block-teal);
+      font-weight: 500;
     }
 
     .education-year {
-      font-style: italic;
-      color: #333;
+      font-size: 9pt;
+      color: var(--text-secondary);
+      background: var(--block-cream);
+      padding: 2px 8px;
     }
 
-    /* Optional sections */
-    .certifications-list,
-    .awards-list,
+    /* Patents section - Special styling */
     .patents-list {
-      margin-left: 20px;
+      margin-left: 0;
+      list-style: none;
     }
 
-    .certifications-list li,
-    .awards-list li,
     .patents-list li {
-      margin-bottom: 4px;
+      margin-bottom: 6px;
+      padding: 8px 12px;
+      background: var(--block-cream);
+      border-left: 3px solid var(--block-coral);
+      font-size: 9pt;
     }
 
     .patent-number {
-      font-weight: bold;
+      font-weight: 700;
+      color: var(--block-navy);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8.5pt;
     }
 
     .patent-title {
-      font-style: italic;
+      font-style: normal;
+      color: var(--text-secondary);
+    }
+
+    /* Awards section */
+    .awards-list {
+      margin-left: 0;
+      list-style: none;
+    }
+
+    .awards-list li {
+      margin-bottom: 4px;
+      padding-left: 16px;
+      position: relative;
+      font-size: 9.5pt;
+    }
+
+    .awards-list li::before {
+      content: "★";
+      position: absolute;
+      left: 0;
+      color: var(--block-mustard);
+    }
+
+    /* Certifications */
+    .certifications-list {
+      margin-left: 16px;
+    }
+
+    .certifications-list li {
+      margin-bottom: 4px;
+      font-size: 9.5pt;
     }
 
     /* Utilities */
@@ -190,6 +283,9 @@
   <!-- Header -->
   <div class="header">
     <h1>{{header.name}}</h1>
+    {{#if header.headline}}
+    <div class="headline">{{header.headline}}</div>
+    {{/if}}
     <div class="contact">
       {{header.email}}
       {{#if header.phone}} • {{header.phone}}{{/if}}

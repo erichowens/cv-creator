@@ -130,6 +130,7 @@ export interface ResumeData {
   // Header
   header: {
     name: string;
+    headline?: string; // Professional headline
     email: string;
     phone: string;
     location: string;
