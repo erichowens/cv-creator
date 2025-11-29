@@ -12,15 +12,16 @@
   <meta property="og:title" content="{{meta.title}}">
   <meta property="og:description" content="{{meta.description}}">
 
-  <!-- Fonts -->
+  <!-- Fonts: Bookish serif + readable body + monospace for code -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
   <style>
     /* ============================================
-       THE QUIET ARCHITECT - Design System
-       Calm Technical Authority
+       THE TECHNICAL BOOKSHELF - Design System
+       Warm and Erudite: Approachable Expertise
+       "Like a well-loved technical bookshelf"
        ============================================ */
 
     * {
@@ -30,32 +31,37 @@
     }
 
     :root {
-      /* Foundation - Warm neutrals, not cold grays */
-      --bg-primary: #FAFAFA;
-      --bg-secondary: #F5F5F4;
-      --bg-card: #FFFFFF;
-      --text-primary: #1C1917;
-      --text-secondary: #57534E;
-      --text-muted: #A8A29E;
-      --border: #E7E5E4;
+      /* Foundation - Aged paper, warm wood tones */
+      --bg-primary: #FAF8F5;      /* Cream, like aged paper */
+      --bg-secondary: #F5F2ED;    /* Warmer secondary */
+      --bg-card: #FFFEFB;         /* Slightly warm white */
+      --text-primary: #2C2824;    /* Warm near-black, like old ink */
+      --text-secondary: #5C534A;  /* Warm brown-gray */
+      --text-muted: #8C8279;      /* Faded, comfortable */
+      --border: #E8E4DD;          /* Warm border */
 
-      /* Accent - Confident but not aggressive */
-      --accent: #2563EB;
-      --accent-hover: #1D4ED8;
-      --accent-muted: #DBEAFE;
-      --accent-subtle: #EFF6FF;
+      /* Accent - Brass bookmark, library warmth */
+      --accent: #B8860B;          /* Dark goldenrod / brass */
+      --accent-hover: #996F0A;    /* Deeper brass */
+      --accent-muted: #F5E6C8;    /* Warm highlight */
+      --accent-subtle: #FBF7EE;   /* Barely there warm */
 
-      /* Metrics - Numbers that speak */
-      --metric-green: #059669;
-      --metric-green-bg: #D1FAE5;
-      --metric-gold: #D97706;
-      --metric-gold-bg: #FEF3C7;
+      /* Secondary accent - Deep library green */
+      --accent-secondary: #2D5A47; /* Library green */
+      --accent-secondary-muted: #E8F0EC;
 
-      /* Typography */
-      --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+      /* Metrics - Warm and confident */
+      --metric-value: #2D5A47;    /* Library green for numbers */
+      --metric-bg: #E8F0EC;       /* Soft green background */
+      --metric-gold: #B8860B;     /* Brass for special emphasis */
+      --metric-gold-bg: #FBF7EE;
+
+      /* Typography - Bookish, readable */
+      --font-heading: 'Crimson Pro', Georgia, 'Times New Roman', serif;
+      --font-body: 'Source Serif 4', Georgia, serif;
       --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 
-      /* Spacing */
+      /* Spacing - Generous, like a well-typeset book */
       --space-1: 0.25rem;
       --space-2: 0.5rem;
       --space-3: 0.75rem;
@@ -66,19 +72,19 @@
       --space-16: 4rem;
       --space-24: 6rem;
 
-      /* Shadows - Subtle depth */
-      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.07);
-      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.08);
+      /* Shadows - Soft, like pages casting shadow */
+      --shadow-sm: 0 1px 3px 0 rgb(44 40 36 / 0.04);
+      --shadow-md: 0 4px 8px -2px rgb(44 40 36 / 0.06), 0 2px 4px -2px rgb(44 40 36 / 0.04);
+      --shadow-lg: 0 12px 20px -4px rgb(44 40 36 / 0.08), 0 4px 8px -4px rgb(44 40 36 / 0.04);
 
-      /* Transitions - Measured, not frantic */
+      /* Transitions - Measured, page-turn feel */
       --transition-fast: 150ms ease;
-      --transition-base: 250ms ease;
-      --transition-slow: 350ms ease;
+      --transition-base: 300ms ease;
+      --transition-slow: 450ms ease;
 
-      /* Layout */
+      /* Layout - Readable column width */
       --max-width: 1100px;
-      --content-width: 720px;
+      --content-width: 680px; /* Slightly narrower for readability */
     }
 
     html {
@@ -86,9 +92,9 @@
     }
 
     body {
-      font-family: var(--font-sans);
-      font-size: 1rem;
-      line-height: 1.6;
+      font-family: var(--font-body);
+      font-size: 1.0625rem; /* 17px - slightly larger for serif readability */
+      line-height: 1.7;     /* More generous for long-form */
       color: var(--text-primary);
       background: var(--bg-primary);
       -webkit-font-smoothing: antialiased;
@@ -96,28 +102,30 @@
     }
 
     /* ============================================
-       TYPOGRAPHY - Clean, confident, not shouting
+       TYPOGRAPHY - Bookish, readable, personal
        ============================================ */
 
     h1, h2, h3, h4 {
+      font-family: var(--font-heading);
       font-weight: 600;
-      letter-spacing: -0.02em;
-      line-height: 1.3;
+      letter-spacing: -0.01em;
+      line-height: 1.35;
       color: var(--text-primary);
     }
 
     h1 {
-      font-size: 2.5rem;
+      font-size: 2.75rem;
       font-weight: 700;
+      letter-spacing: -0.02em;
     }
 
     h2 {
-      font-size: 1.75rem;
+      font-size: 1.875rem;
       margin-bottom: var(--space-6);
     }
 
     h3 {
-      font-size: 1.25rem;
+      font-size: 1.375rem;
       margin-bottom: var(--space-3);
     }
 
@@ -126,14 +134,17 @@
       margin-bottom: var(--space-4);
     }
 
+    /* Links - brass bookmark accent */
     a {
       color: var(--accent);
       text-decoration: none;
       transition: color var(--transition-fast);
+      border-bottom: 1px solid transparent;
     }
 
     a:hover {
       color: var(--accent-hover);
+      border-bottom-color: var(--accent-muted);
     }
 
     /* ============================================
@@ -182,9 +193,11 @@
     }
 
     .nav-brand {
+      font-family: var(--font-heading);
       font-weight: 600;
       color: var(--text-primary);
-      font-size: 1.125rem;
+      font-size: 1.25rem;
+      letter-spacing: -0.01em;
     }
 
     .nav-links {
@@ -327,16 +340,17 @@
     }
 
     .metric-value {
-      font-family: var(--font-mono);
-      font-size: 2rem;
-      font-weight: 600;
-      color: var(--accent);
+      font-family: var(--font-heading);
+      font-size: 2.25rem;
+      font-weight: 700;
+      color: var(--accent-secondary); /* Library green */
       line-height: 1;
       margin-bottom: var(--space-2);
     }
 
     .metric-label {
-      font-size: 0.875rem;
+      font-family: var(--font-body);
+      font-size: 0.9375rem;
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.05em;
