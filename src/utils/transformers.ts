@@ -107,16 +107,16 @@ export function transformToPortfolio(
 
 /**
  * Generate professional summary
- * Uses the full profile summary for comprehensive coverage
+ * Includes statement of purpose (messaging) + factual summary
  */
 function generateProfessionalSummary(
   profile: CareerProfile,
   strategy?: PositioningStrategy
 ): string {
-  // Use the full profile summary - it's already well-written
-  // Add positioning headline if available for extra punch
-  if (strategy?.positioning.headline && strategy?.positioning.messaging) {
-    return `${strategy.positioning.headline}. ${profile.summary}`;
+  // Include the statement of purpose (messaging) if available
+  // This is the compelling "why" that goes before the factual "what"
+  if (strategy?.positioning.messaging) {
+    return `${strategy.positioning.messaging}\n\n${profile.summary}`;
   }
 
   return profile.summary;
