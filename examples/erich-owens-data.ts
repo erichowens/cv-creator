@@ -624,7 +624,9 @@ export const erichOwensCareerProfile: CareerProfile = {
       "Builder"
     ],
     tone: "Technical depth meets pragmatic shipping—mathematical foundations applied to real products that billions use",
-    colors: ["#0066cc", "#2563eb"] // Professional blue
+    colors: ["#0066cc", "#2563eb"], // Professional blue
+    url: "https://erichowens.com",
+    ogImage: "https://erichowens.com/images/og-image.png"
   }
 };
 

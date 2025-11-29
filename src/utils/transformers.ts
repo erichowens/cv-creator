@@ -101,6 +101,8 @@ export function transformToPortfolio(
         ...profile.brand.keywords,
         ...(strategy?.contentStrategy.topics || []),
       ],
+      url: (profile.brand as any).url || '',
+      ogImage: (profile.brand as any).ogImage || '',
     },
   };
 }
