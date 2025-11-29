@@ -83,6 +83,8 @@ export interface Project {
   url?: string;
   github?: string;
   screenshot?: string; // Path to image
+  patentUrl?: string; // Link to Google Patents
+  additionalUrls?: string[]; // Additional links (e.g., blog posts)
 }
 
 export interface Education {
