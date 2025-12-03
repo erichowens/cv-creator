@@ -47,7 +47,8 @@ export const erichOwensCareerProfile: CareerProfile = {
       date: "2023-08",
       endDate: "2025-09",
       type: "role_change",
-      title: "Staff Engineer > TLM > Engineering Manager - Facebook AI Editing",
+      title: "Engineering Manager > TLM > Staff Software Engineer",
+      team: "Facebook AI Editing",
       company: "Meta",
       description: "Managed mobile and ML engineers integrating computer vision and LLMs into composer and creation tools; led research and development for photo understanding, event detection, and collage creation",
       impact: "Shipped AI-powered editing features to billions of users across Facebook mobile apps",
@@ -57,7 +58,8 @@ export const erichOwensCareerProfile: CareerProfile = {
       date: "2022-06",
       endDate: "2023-07",
       type: "role_change",
-      title: "Engineering Manager - Avatars Craft",
+      title: "Engineering Manager",
+      team: "Avatars Craft",
       company: "Meta",
       description: "Led avatar customization, asset pipeline, and ML integration; managed 40+ engineers across the org including engineering managers; built tooling to let artists and PMs understand ML decisions",
       impact: "Scaled avatar systems across Meta's VR ecosystem; shipped ML-powered generation with human-in-the-loop visualization tools",
@@ -85,7 +87,8 @@ export const erichOwensCareerProfile: CareerProfile = {
       date: "2020-06",
       endDate: "2022-06",
       type: "role_change",
-      title: "Staff Engineer > TLM > Engineering Manager - XR Tech",
+      title: "Staff Engineer > TLM > Engineering Manager",
+      team: "XR Tech",
       company: "Meta",
       description: "Built computer vision and ML for Facebook face tech including mobile AR face tracker, FACS expression tracking, and audio-based lipsync",
       impact: "Shipped production face tracking to Instagram AR effects used by millions daily",
@@ -95,7 +98,8 @@ export const erichOwensCareerProfile: CareerProfile = {
       date: "2019-08",
       endDate: "2020-05",
       type: "role_change",
-      title: "Staff Engineer - Instagram AR",
+      title: "Staff Engineer",
+      team: "Instagram AR",
       company: "Meta",
       description: "Led effect curation and personalized ranking; hired art curators; built tools for surfacing avant-garde Spark effects",
       impact: "Improved discovery of high-quality AR effects, increasing engagement and creator retention",
@@ -105,7 +109,8 @@ export const erichOwensCareerProfile: CareerProfile = {
       date: "2018-11",
       endDate: "2019-08",
       type: "role_change",
-      title: "Engineering Manager - FAIR (Facebook AI Research)",
+      title: "Engineering Manager",
+      team: "FAIR (Facebook AI Research)",
       company: "Meta",
       description: "Managed AI engineers on embodied agents, MRI compressed sensing, AlphaZero open-source; contributed to fastMRI website/dataset release and competition kick-off",
       impact: "Supported open-source AI research including fastMRI dataset release with NYU Langone",
@@ -115,7 +120,8 @@ export const erichOwensCareerProfile: CareerProfile = {
       date: "2016-12",
       endDate: "2018-11",
       type: "role_change",
-      title: "Founding Engineer - Facebook Spaces & Social VR",
+      title: "Founding Engineer",
+      team: "Facebook Spaces & Social VR",
       company: "Meta",
       description: "Built 'avatar from photo' system in 2 months for Facebook's first social VR app; hired ex-Pixar talent for parametric avatars",
       impact: "Shipped company's best-reviewed avatars (FastCompany coverage); launched Facebook Spaces to public",
@@ -125,7 +131,8 @@ export const erichOwensCareerProfile: CareerProfile = {
       date: "2016-11",
       endDate: "2016-11",
       type: "role_change",
-      title: "Engineer - Building 8 (Hackamonth)",
+      title: "Engineer",
+      team: "Building 8 (Hackamonth)",
       company: "Meta",
       description: "LIDAR-based social VR room scans; thermal haptics research; peltier-cooled VR controllers",
       impact: "Demonstrated novel haptic feedback modality; filed patent on thermal haptics",
@@ -135,7 +142,8 @@ export const erichOwensCareerProfile: CareerProfile = {
       date: "2016-01",
       endDate: "2016-10",
       type: "role_change",
-      title: "Computer Vision Software Engineer - Oculus Vision",
+      title: "Computer Vision Software Engineer",
+      team: "Oculus Vision",
       company: "Meta (Oculus)",
       description: "Built VR simulations for VR designers pre-hand-controller launch",
       impact: "Used VR to design VR experiences, accelerating product development cycles",
@@ -145,7 +153,8 @@ export const erichOwensCareerProfile: CareerProfile = {
       date: "2015-01",
       endDate: "2015-12",
       type: "role_change",
-      title: "Tech Lead - Comment Ranking",
+      title: "Tech Lead",
+      team: "Comment Ranking",
       company: "Meta (Facebook)",
       description: "Overhauled comment ranking for quality and civility; semantic similarity, Thompson sampling; co-authored PNLambda config language; authored Commentology tool",
       impact: "Commentology tool still used company-wide a decade later; significantly improved comment quality",
@@ -173,7 +182,8 @@ export const erichOwensCareerProfile: CareerProfile = {
       date: "2013-06",
       endDate: "2014-12",
       type: "role_change",
-      title: "Software Engineer - News Feed Ranking",
+      title: "Software Engineer",
+      team: "News Feed Ranking",
       company: "Meta (Facebook)",
       description: "Built first CV-based filter for Facebook news feed (hackathon win/patent); created JS visualization + Presto SQL tooling for experimentation",
       impact: "Pioneered computer vision in newsfeed ranking; filed patent; improved user experience",
@@ -421,14 +431,30 @@ export const erichOwensCareerProfile: CareerProfile = {
   ],
 
   skills: [
-    // Technical Skills - ML/AI
+    // AI/ML - Priority Skills (LLMs and Agentic AI first per user request)
+    { category: "technical", name: "LLMs", proficiency: 90, yearsOfExperience: 4, priority: 100 },
+    { category: "technical", name: "Agentic AI Design", proficiency: 90, yearsOfExperience: 3, priority: 99 },
     { category: "technical", name: "Machine Learning", proficiency: 95, yearsOfExperience: 13 },
     { category: "technical", name: "Computer Vision", proficiency: 95, yearsOfExperience: 12 },
     { category: "technical", name: "Natural Language Processing", proficiency: 90, yearsOfExperience: 13 },
+
+    // Mathematical Foundations (per user request)
+    { category: "domain", name: "Numerical Optimization", proficiency: 90, yearsOfExperience: 15 },
+    { category: "domain", name: "Linear Algebra", proficiency: 95, yearsOfExperience: 18 },
+    { category: "domain", name: "Mathematical Modeling", proficiency: 95, yearsOfExperience: 18 },
+
+    // Engineering Management & Leadership (per user request)
+    { category: "leadership", name: "Engineering Management", proficiency: 90, yearsOfExperience: 7 },
+    { category: "leadership", name: "Technical Leadership", proficiency: 95, yearsOfExperience: 10 },
+    { category: "leadership", name: "Team Building", proficiency: 90, yearsOfExperience: 7 },
+    { category: "leadership", name: "Hiring & Interviewing", proficiency: 90, yearsOfExperience: 10 },
+    { category: "leadership", name: "Cross-functional Collaboration", proficiency: 95, yearsOfExperience: 12 },
+    { category: "leadership", name: "Stakeholder Communication", proficiency: 90, yearsOfExperience: 10 },
+
+    // Technical Skills - ML/AI Frameworks
     { category: "technical", name: "PyTorch", proficiency: 90, yearsOfExperience: 8 },
     { category: "technical", name: "TensorFlow", proficiency: 80, yearsOfExperience: 9 },
     { category: "technical", name: "CLIP", proficiency: 85, yearsOfExperience: 3 },
-    { category: "technical", name: "GPT-3/LLMs", proficiency: 85, yearsOfExperience: 3 },
     { category: "technical", name: "Stable Diffusion", proficiency: 75, yearsOfExperience: 2 },
 
     // Technical Skills - VR/AR
@@ -444,32 +470,23 @@ export const erichOwensCareerProfile: CareerProfile = {
     { category: "technical", name: "TypeScript/JavaScript", proficiency: 85, yearsOfExperience: 8 },
     { category: "technical", name: "C++", proficiency: 75, yearsOfExperience: 10 },
     { category: "technical", name: "C#", proficiency: 70, yearsOfExperience: 8 },
-    { category: "technical", name: "PHP/Hack", proficiency: 60, yearsOfExperience: 12 },
-    { category: "technical", name: "Rust", proficiency: 50, yearsOfExperience: 2 },
     { category: "technical", name: "System Design", proficiency: 90, yearsOfExperience: 12 },
     { category: "technical", name: "Ranking Systems", proficiency: 95, yearsOfExperience: 11 },
     { category: "technical", name: "Recommendation Systems", proficiency: 90, yearsOfExperience: 11 },
 
-    // Leadership Skills
-    { category: "leadership", name: "Engineering Management", proficiency: 90, yearsOfExperience: 7 },
-    { category: "leadership", name: "Technical Leadership", proficiency: 95, yearsOfExperience: 10 },
-    { category: "leadership", name: "Team Building", proficiency: 90, yearsOfExperience: 7 },
-    { category: "leadership", name: "Hiring & Interviewing", proficiency: 90, yearsOfExperience: 10 },
-    { category: "leadership", name: "Cross-functional Collaboration", proficiency: 95, yearsOfExperience: 12 },
-    { category: "leadership", name: "Product Strategy", proficiency: 85, yearsOfExperience: 10 },
-
-    // Domain Expertise
+    // Additional Domain Expertise
     { category: "domain", name: "Applied Mathematics", proficiency: 95, yearsOfExperience: 18 },
     { category: "domain", name: "Probability Theory", proficiency: 90, yearsOfExperience: 15 },
-    { category: "domain", name: "Nonlinear Dynamics", proficiency: 85, yearsOfExperience: 14 },
     { category: "domain", name: "Medical AI", proficiency: 85, yearsOfExperience: 5 },
-    { category: "domain", name: "Cryptography", proficiency: 80, yearsOfExperience: 14 },
+    { category: "domain", name: "Drones & Geospatial AI", proficiency: 85, yearsOfExperience: 2 },
 
-    // Soft Skills
+    // Soft Skills (per user request)
     { category: "soft", name: "Rapid Domain Mastery", proficiency: 95, yearsOfExperience: 15 },
     { category: "soft", name: "Prototyping & Shipping", proficiency: 95, yearsOfExperience: 15 },
     { category: "soft", name: "Creative Problem Solving", proficiency: 95, yearsOfExperience: 15 },
-    { category: "soft", name: "Mentorship", proficiency: 90, yearsOfExperience: 10 }
+    { category: "soft", name: "Mentorship", proficiency: 90, yearsOfExperience: 10 },
+    { category: "soft", name: "Technical Communication", proficiency: 95, yearsOfExperience: 12 },
+    { category: "soft", name: "Strategic Thinking", proficiency: 90, yearsOfExperience: 10 }
   ],
 
   education: [
@@ -640,9 +657,9 @@ export const erichOwensPositioning: PositioningStrategy = {
       "Every ML system comes with its visualization: I don't just build models—I build the tools that let humans understand what the model sees, debug its failures, and trust its decisions",
       "Systems that outlast their creators: Comment ranking algorithms still running 10+ years later at Meta scale; infrastructure that survives team turnover and strategy pivots",
       "Mathematician who speaks product: Applied math foundations let me jump domains (vision, VR, drones, medical AI) while tooling instincts ensure the work actually ships",
-      "Leadership that oscillates: Staff Engineer, Tech Lead, or managing 100+ people across orgs—I go where the problem needs me, not where the ladder points",
+      "Leadership that adapts: Staff Engineer, Tech Lead, Engineering Manager and directly leading teams, orgs—I go where the problem requires, not where the ladder points",
       "12 patents, zero orphans: Every invention came with documentation, visualization, and a path to production",
-      "Taste meets utility: Hired ex-Pixar talent, curated avant-garde AR effects, built thermal haptic controllers—because delight and function aren't opposites"
+      "Taste meets utility: Hired ex-Pixar talent, curated avant-garde AR effects, built thermal haptic controllers—because delight and function aren't opposites, and great products are the felt and seen details"
     ],
     messaging: "I build systems that last and tools that explain them. Most engineers choose: go deep technically or go broad into management. I oscillate based on what the problem needs. Most ML engineers throw models over the wall. I build the visualization and tooling stack that brings humans into the loop—so others can understand the problem and see how the solution works.",
     keyMetrics: [

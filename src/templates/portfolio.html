@@ -500,12 +500,20 @@
       margin-bottom: var(--space-1);
     }
 
-    .experience-company {
+    .experience-team {
       font-size: 1rem;
+      color: rgba(255, 255, 255, 0.85);
+      font-weight: 500;
+      margin-top: var(--space-1);
+    }
+
+    .experience-company {
+      font-size: 0.8rem;
       color: var(--block-mustard);
-      font-weight: 600;
+      font-weight: 500;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.12em;
+      margin-top: var(--space-1);
     }
 
     .experience-dates {
@@ -997,6 +1005,7 @@
         <div class="experience-item">
           <div class="experience-header">
             <div class="experience-role">{{role}}</div>
+            {{#if team}}<div class="experience-team">{{team}}</div>{{/if}}
             <div class="experience-company">{{company}}</div>
             <div class="experience-dates">{{dates}}</div>
           </div>

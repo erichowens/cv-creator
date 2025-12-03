@@ -146,7 +146,13 @@ function selectCoreSkills(skills: CareerProfile['skills'], limit: number): strin
   return skills
     .filter((s) => s.category === 'technical') // Only technical skills for resume
     .sort((a, b) => {
-      // Sort by: proficiency * years of experience
+      // Priority skills come first (higher priority = earlier)
+      const priorityA = a.priority ?? 0;
+      const priorityB = b.priority ?? 0;
+      if (priorityA !== priorityB) {
+        return priorityB - priorityA; // Higher priority first
+      }
+      // Then sort by: proficiency * years of experience
       const scoreA = a.proficiency * a.yearsOfExperience;
       const scoreB = b.proficiency * b.yearsOfExperience;
       return scoreB - scoreA;
@@ -193,6 +199,7 @@ function transformExperience(events: TimelineEvent[]): ExperienceEntry[] {
     experiences.push({
       company: event.company || 'Unknown',
       role: event.title,
+      team: event.team,
       dates: formatDate(event.date, event.endDate),
       bullets,
       technologies: event.tags,
@@ -223,22 +230,10 @@ function formatBullets(bullets: string[]): string[] {
   return bullets
     .filter((b) => b && b.trim().length > 0)
     .map((bullet) => {
-      // Ensure bullet starts with action verb
-      const actionVerbs = [
-        'Led', 'Built', 'Architected', 'Optimized', 'Reduced', 'Increased',
-        'Designed', 'Implemented', 'Developed', 'Managed', 'Created',
-      ];
-
-      const startsWithVerb = actionVerbs.some((verb) =>
-        bullet.startsWith(verb)
-      );
-
-      if (!startsWithVerb) {
-        // Try to detect what was done and prepend appropriate verb
-        return bullet; // For MVP, just return as-is
-      }
-
-      return bullet;
+      // Capitalize first letter for consistency
+      const trimmed = bullet.trim();
+      const capitalized = trimmed.charAt(0).toUpperCase() + trimmed.slice(1);
+      return capitalized;
     });
 }
 
@@ -350,6 +345,7 @@ function transformToPortfolioExperience(events: TimelineEvent[]): PortfolioExper
     .map((event) => ({
       company: event.company || 'Unknown',
       role: event.title,
+      team: event.team,
       dates: formatDate(event.date, event.endDate),
       description: event.description,
       achievements: [event.impact, ...(event.bullets || [])],

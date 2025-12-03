@@ -56,6 +56,7 @@ export interface TimelineEvent {
   endDate?: string; // End date: ISO date, "2020-01", or "Present"
   type: 'role_change' | 'patent' | 'award' | 'publication' | 'milestone' | 'certification';
   title: string; // Role title or event name
+  team?: string; // Team/org within the company (e.g., "Facebook AI Editing")
   company?: string;
   description: string;
   impact: string; // Quantifiable impact/achievement
@@ -73,6 +74,7 @@ export interface Skill {
   name: string;
   proficiency: number; // 0-100
   yearsOfExperience: number;
+  priority?: number; // Higher priority skills appear first (default: 0)
 }
 
 export interface Project {
@@ -170,6 +172,7 @@ export interface PatentEntry {
 export interface ExperienceEntry {
   company: string;
   role: string;
+  team?: string; // Team/org within company
   dates: string; // "Jan 2020 - Present"
   location?: string;
   bullets: string[]; // Achievement bullets with metrics
@@ -250,6 +253,7 @@ export interface PortfolioData {
 export interface PortfolioExperience {
   company: string;
   role: string;
+  team?: string; // Team/org within company
   dates: string;
   description: string;
   achievements: string[];
